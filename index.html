@@ -11,7 +11,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Russo+One&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="default.css">
-    
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css">
 	<link id="theme-style" rel="stylesheet" type="text/css" href="">
 
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -167,17 +167,17 @@
 			<a href=""></a>
 			<h3 style="text-align: center;">Get In Touch</h3>
 
-			<form id="contact-form" class="gform" method="POST" action="">
+			<form id="contact-form" class="gform" method="POST" action="https://script.google.com/macros/s/AKfycbzFzaXx-7lZ2YCHpHrq__pE9_VImwbqSn-vRfH4jQ/exec">
 				<a name="contact"></a>
 
 				<label>Name</label>
-				<input class="input-field" type="text" name="name">
+				<input class="input-field" type="text" name="name" required>
 
 				<label>Subject</label>
 				<input class="input-field" type="text" name="subject">
 
 				<label>Email</label>
-				<input class="input-field" type="text" name="email">
+				<input class="input-field" type="text" name="email" required>
 
 				<label>Message</label>
 				<textarea class="input-field" name="message"></textarea>
@@ -185,8 +185,15 @@
 				<input id="submit-btn" type="submit" value="Send">
 			</form>
 		</div>
-	</section> 
+	</section>
+	
+	<div class="thankyou_message" style="display: none;">
+		<h3><em>Thanks</em>for contacting us!</h3>
+		<h3>I will get back to you soon!</h3>
+	</div>
 
 	<script type="text/javascript" src="script.js"></script>
+	<script data-cfasync="false" src="form-submission-handler.js"></script>
+
 </body>
 </html>
