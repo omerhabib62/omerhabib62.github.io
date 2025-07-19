@@ -4,8 +4,8 @@
 
 	--borderColor:#c1c1c1;
 
-	--mainText:black;
-	--secondaryText:#4b5156;
+	--mainText:#fff;
+	--secondaryText:#fff;
 
 	--themeDotBorder:#24292e;
 
@@ -19,10 +19,15 @@
 }
 
 
-html, body{
+html, body {
 	padding: 0;
 	margin: 0;
 	scroll-behavior: smooth;
+}
+
+body {
+	background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+	min-height: 100vh;
 }
 
 body *{
@@ -80,6 +85,11 @@ h6 { font-size: 16px;}
 	width: 1200px;
 	padding: 50px;
 	margin: 0 auto;
+	background: transparent;
+}
+
+.intro-wrapper {
+	margin-top: 0;
 }
 
 
@@ -173,14 +183,15 @@ h6 { font-size: 16px;}
 	padding-bottom: 50px;
 }
 
-#profile_pic{
+#profile_pic {
 	display: block;
-	margin:0 auto;
-
-	height: 255px;
-	width: 200px;
+	margin: 0 auto;
+	height: 180px;
+	width: 180px;
 	object-fit: cover;
-	border:2px solid var(--borderColor);
+	border-radius: 50%;
+	border: 4px solid #fff;
+	box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
 }
 
 
@@ -233,30 +244,30 @@ h6 { font-size: 16px;}
 	text-align: center;
 }
 
-.right-column{
-	grid-area: right-column;
-	display: grid;
-	align-content: center;
-
-	padding-top: 50px;
-	padding-bottom: 50px;
+.right-column {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
-
-#preview-shadow{
-	background-color: var(--previewShadow);
-	max-width: 300px;
-	height: 180px;
-	padding-left: 30px;
-	padding-top: 30px;
+#preview-shadow {
+	margin: 30px auto 30px 32px;
+	max-width: 420px;
 }
 
-#preview{
-	width: 300px;
-	border:1.5px solid #17a2b8;
-	background-color: var(--previewBg);
-	padding:15px;
+#preview {
+	width: auto;
+	min-width: 260px;
+	max-width: 100%;
+	border: 1.5px solid rgba(23,162,184,0.18);
+	background: rgba(255,255,255,0.55);
+	box-shadow: 0 4px 24px 0 rgba(31,38,135,0.10);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	border-radius: 18px;
+	padding: 24px 18px 18px 18px;
 	position: relative;
+	box-sizing: border-box;
 }
 
 .corner{
@@ -324,23 +335,32 @@ h6 { font-size: 16px;}
 	padding-bottom: 50px;
 }
 
-.post{
-	border:1px solid var(--borderColor);
-	-webkit-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
-	-moz-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
-	box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+.post {
+	border: none;
+	background: #fff;
+	border-radius: 18px;
+	box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+	transition: transform 0.2s, box-shadow 0.2s;
+}
+.post:hover {
+	transform: translateY(-8px) scale(1.03);
+	box-shadow: 0 8px 32px 0 rgba(0,0,0,0.16);
 }
 
-.thumbnail{
+.thumbnail {
 	display: block;
 	width: 100%;
-	height:180px;
+	height: 180px;
 	object-fit: cover;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
 }
 
-.post-preview{
+.post-preview {
 	background-color: #fff;
-	padding:15px;
+	padding: 15px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
 }
 
 .post-title{
@@ -397,6 +417,53 @@ h6 { font-size: 16px;}
 	border:none;
 }
 
+.pure-button, .pure-button-primary {
+	border-radius: 24px !important;
+	padding: 10px 28px !important;
+	font-size: 1rem;
+	font-weight: 600;
+	background: linear-gradient(90deg, #17a2b8 0%, #6a82fb 100%) !important;
+	color: #fff !important;
+	border: none !important;
+	box-shadow: 0 2px 8px 0 rgba(23,162,184,0.10);
+	transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.pure-button:hover, .pure-button-primary:hover {
+	background: linear-gradient(90deg, #6a82fb 0%, #17a2b8 100%) !important;
+	box-shadow: 0 4px 16px 0 rgba(23,162,184,0.18);
+	transform: translateY(-2px) scale(1.04);
+}
+
+a {
+	transition: color 0.2s, text-decoration 0.2s;
+}
+a:hover {
+	color: #6a82fb;
+	text-decoration: underline;
+}
+
+section {
+	margin-bottom: 60px;
+}
+
+.post-wrapper {
+	gap: 32px;
+	padding-bottom: 60px;
+}
+
+.social-icons a {
+	font-size: 1.5rem;
+	color: #17a2b8;
+	margin: 0 8px;
+	transition: color 0.2s, transform 0.2s;
+	display: inline-block;
+	vertical-align: middle;
+}
+.social-icons a:hover {
+	color: #6a82fb;
+	transform: scale(1.18);
+}
+
 
 @media screen and (max-width: 1200px){
 	.main-container{
@@ -433,4 +500,123 @@ h6 { font-size: 16px;}
 
 	}
 
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Russo One', sans-serif;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	color: #222;
+	margin-bottom: 18px;
+}
+
+h1 { font-size: 2.6rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.2rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.95rem; }
+
+body, li, span, label, input, textarea {
+	font-family: 'Roboto Mono', monospace;
+	font-size: 1.05rem;
+	color: #222;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #1a1a1a;
+}
+
+.s1, .s2 {
+	background: transparent;
+	border-bottom: 1px solid var(--borderColor);
+	overflow: auto;
+	font-family: 'Roboto Mono', monospace;
+}
+
+section {
+	background: transparent;
+}
+
+.main-container {
+	background: transparent;
+}
+
+@media screen and (max-width: 800px) {
+	.main-container {
+		width: 98%;
+		padding: 10px;
+	}
+	#preview-shadow {
+		margin: 20px 0 20px 0;
+		padding-left: 10px;
+		padding-top: 10px;
+	}
+	#preview {
+		padding: 14px 6px 10px 6px;
+	}
+	.post-wrapper {
+		gap: 18px;
+		padding-bottom: 30px;
+	}
+	#profile_pic {
+		height: 120px;
+		width: 120px;
+	}
+}
+
+#contact-form-wrapper {
+	margin-top: 32px;
+	display: flex;
+	justify-content: center;
+}
+
+/* Force all text to white by default */
+h1, h2, h3, h4, h5, h6, li, span, label, input, textarea, a, strong, .post-title, .post-intro {
+  color: #fff !important;
+}
+
+/* Exception: Use dark text where background is white (e.g., .post, .post-preview, .s2) */
+.s2 h1, .s2 h2, .s2 h5, .s2 h6,
+.s2 p, .s2 span, .s2 label, .s2 input, .s2 textarea, .s2 strong,
+.post, .post-preview, .post-title, .post-intro {
+  color: #222 !important;
+}
+
+.s2 h3{
+  color: #fff !important;
+}
+
+.s2 li{
+	color: #fff !important;	
+}
+
+.s2 h4{
+	color: #fff !important;
+  }
+
+.s2 h5{
+	color: #fff !important;
+}
+
+
+.s2 a{
+	color: #fff !important;
+}
+
+
+/* Highlighted Projects heading white by default */
+.highlighted-projects-heading, h3.highlighted-projects-heading {
+  color: #fff !important;
+}
+
+/* Exception: in .s2 (white background), use dark text */
+.s2 .highlighted-projects-heading, .s2 h3.highlighted-projects-heading {
+  color: #222 !important;
+}
+
+.s2 .about-me-white,
+.s2 .about-me > .about-me-white,
+.s2 .about-me-white.about-me-white {
+  color: #fff !important;
 }

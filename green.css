@@ -4,7 +4,7 @@
 
 	--borderColor:#161914;
 
-	--mainText:#fff;
+	--mainText:#f8fafc;
 	--secondaryText:#eeeeee;
 
 	--themeDotBorder:#FFF;
@@ -16,4 +16,9 @@
 	--buttonColor:#669966;
 
 
+}
+
+body {
+    background: var(--mainColor);
+    color: var(--mainText);
 }

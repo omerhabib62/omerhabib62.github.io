@@ -5,15 +5,43 @@
 	--borderColor:#164D56;
 
 	--mainText:#fff;
-	--secondaryText:#eeeeee;
+	--secondaryText:#fff;
 
 	--themeDotBorder:#FFF;
 
 	--previewBg:rgb(25, 39, 52, 0.8);
 	--previewShadow:#111921;
 
-
 	--buttonColor:#17a2b8;
+}
 
+body {
+    background: var(--mainColor);
+    color: var(--mainText);
+}
 
+h1, h2, h3, h4, h5, h6, strong {
+    color: var(--mainText);
+}
+
+p, li, span, label, input, textarea {
+    color: var(--secondaryText);
+}
+
+.post-preview, .post-title, .post-intro {
+    color: #111 !important;
+}
+
+.about-me > p,
+.about-me p,
+.about-me * p {
+    color: #fff !important;
+}
+
+.about-me-white {
+    color: #fff !important;
+}
+
+.s2 .about-me-white {
+  color: #fff !important;
 }
