@@ -147,9 +147,9 @@ export default function ArchitecturePlayground() {
         {/* Visual Graph Panel */}
         <div className="lg:col-span-2 glassmorphism rounded-lg p-6 flex flex-col justify-between min-h-[400px] border border-gray-800">
           <div>
-            <div className="flex items-center justify-between border-b border-gray-800 pb-3 mb-4">
-              <h4 className="font-sans font-bold text-white text-lg">{flows[activeProject].title}</h4>
-              <span className="text-xs font-mono bg-cyber-cyan/10 border border-cyber-cyan/20 px-2.5 py-1 rounded text-cyber-cyan font-semibold">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-800 pb-3 mb-4 gap-2">
+              <h4 className="font-sans font-bold text-white text-base sm:text-lg">{flows[activeProject].title}</h4>
+              <span className="text-xs font-mono bg-cyber-cyan/10 border border-cyber-cyan/20 px-2.5 py-1 rounded text-cyber-cyan font-semibold self-start sm:self-center">
                 {flows[activeProject].metric}
               </span>
             </div>
@@ -186,11 +186,11 @@ export default function ArchitecturePlayground() {
             </div>
           </div>
 
-          <div className="border-t border-gray-800/80 pt-4 flex items-center justify-between text-xs text-gray-500 font-mono">
-            <span className="flex items-center gap-1.5">
+          <div className="border-t border-gray-800/80 pt-4 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-gray-500 font-mono gap-1.5">
+            <span className="flex items-center gap-1.5 self-center sm:self-auto">
               <Zap className="w-3.5 h-3.5 text-cyber-cyan animate-pulse" /> Live System Mock Engine
             </span>
-            <span>Interactive Data Pipelines</span>
+            <span className="self-center sm:self-auto">Interactive Data Pipelines</span>
           </div>
         </div>
 

@@ -155,12 +155,12 @@ export default function ApiExplorer() {
     <div className="space-y-4">
       <div className="border border-gray-800 rounded-lg overflow-hidden glassmorphism">
         {/* API Title Header */}
-        <div className="bg-gray-950/80 px-4 py-3 flex items-center justify-between border-b border-gray-800 font-mono text-xs">
-          <div className="flex items-center gap-2">
+        <div className="bg-gray-950/80 px-4 py-3 flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-800 font-mono text-xs gap-2">
+          <div className="flex items-center gap-2 self-start sm:self-auto">
             <Terminal className="w-4 h-4 text-cyber-emerald" />
             <span className="font-bold text-gray-400">interactive-api-swagger v2.1.0</span>
           </div>
-          <div className="text-gray-500 flex items-center gap-1.5">
+          <div className="text-gray-500 flex items-center gap-1.5 self-start sm:self-auto">
             <span className="w-2 h-2 rounded-full bg-cyber-emerald animate-ping" /> Base URL: <span className="text-cyber-emerald">localhost:3000</span>
           </div>
         </div>
@@ -198,7 +198,7 @@ export default function ApiExplorer() {
 
                 {/* Expanded Box */}
                 {isExpanded && (
-                  <div className="px-6 pb-6 pt-4 border-t border-gray-900/60 bg-black/40 space-y-6">
+                  <div className="px-4 sm:px-6 pb-6 pt-4 border-t border-gray-900/60 bg-black/40 space-y-6">
                     <p className="text-sm text-gray-300 font-sans leading-relaxed">{ep.description}</p>
 
                     {/* Parameters or Inputs */}
@@ -235,7 +235,7 @@ export default function ApiExplorer() {
                       <div className="space-y-3">
                         <h4 className="text-xs font-mono font-bold text-gray-400 uppercase tracking-wider">Request Parameters</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="space-y-3 bg-black/30 p-4 rounded border border-gray-900">
+                          <div className="space-y-3 bg-black/30 p-3 sm:p-4 rounded border border-gray-900">
                             <div className="space-y-1">
                               <label className="text-[10px] font-mono text-cyber-cyan font-bold block">NAME</label>
                               <input
@@ -266,7 +266,7 @@ export default function ApiExplorer() {
                           </div>
                           <div className="space-y-1.5">
                             <label className="text-[10px] font-mono text-gray-400 block font-bold">RAW JSON STRUCTURE</label>
-                            <pre className="p-3 bg-gray-950 border border-gray-900 rounded text-[10px] font-mono text-gray-500 overflow-x-auto h-[125px] flex items-center">
+                            <pre className="p-3 bg-gray-950 border border-gray-900 rounded text-[10px] font-mono text-gray-500 overflow-x-auto h-[125px] block py-4">
 {`{
   "name": "${inputs.name}",
   "email": "${inputs.email}",

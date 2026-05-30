@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 font-mono 
-        ${isScrolled ? "bg-gray-950/80 backdrop-blur-md border-b border-gray-900/60 py-3" : "bg-transparent py-5"}`}
+        ${isScrolled || isMobileMenuOpen ? "bg-gray-950/90 backdrop-blur-md border-b border-gray-900/60 py-3" : "bg-transparent py-5"}`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Brand Logo */}

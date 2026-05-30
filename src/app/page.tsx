@@ -158,22 +158,22 @@ export default function Home() {
             </div>
 
             {/* Impact Metric Counters Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8">
-              <div className="bg-gray-950/60 border border-gray-900 rounded-lg p-4 font-mono text-center md:text-left">
-                <p className="text-2xl font-bold text-white">6+ YOE</p>
-                <p className="text-[10px] text-gray-500 uppercase font-semibold">Systems Dev</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-8">
+              <div className="bg-gray-950/60 border border-gray-900 rounded-lg p-3 sm:p-4 font-mono text-center md:text-left">
+                <p className="text-xl sm:text-2xl font-bold text-white">6+ YOE</p>
+                <p className="text-[9px] sm:text-[10px] text-gray-500 uppercase font-semibold tracking-wider">Systems Dev</p>
               </div>
-              <div className="bg-gray-950/60 border border-gray-900 rounded-lg p-4 font-mono text-center md:text-left">
-                <p className="text-2xl font-bold text-cyber-cyan">90% Reduction</p>
-                <p className="text-[10px] text-gray-500 uppercase font-semibold">Groops Database Load</p>
+              <div className="bg-gray-950/60 border border-gray-900 rounded-lg p-3 sm:p-4 font-mono text-center md:text-left">
+                <p className="text-xl sm:text-2xl font-bold text-cyber-cyan">90% Reduction</p>
+                <p className="text-[9px] sm:text-[10px] text-gray-500 uppercase font-semibold tracking-wider">Groops Database Load</p>
               </div>
-              <div className="bg-gray-950/60 border border-gray-900 rounded-lg p-4 font-mono text-center md:text-left">
-                <p className="text-2xl font-bold text-cyber-emerald">357 Tests</p>
-                <p className="text-[10px] text-gray-500 uppercase font-semibold">Jest Code Coverage</p>
+              <div className="bg-gray-950/60 border border-gray-900 rounded-lg p-3 sm:p-4 font-mono text-center md:text-left">
+                <p className="text-xl sm:text-2xl font-bold text-cyber-emerald">357 Tests</p>
+                <p className="text-[9px] sm:text-[10px] text-gray-500 uppercase font-semibold tracking-wider">Jest Code Coverage</p>
               </div>
-              <div className="bg-gray-950/60 border border-gray-900 rounded-lg p-4 font-mono text-center md:text-left">
-                <p className="text-2xl font-bold text-cyber-indigo">&lt;1ms Sync</p>
-                <p className="text-[10px] text-gray-500 uppercase font-semibold">Redis WebSockets Targets</p>
+              <div className="bg-gray-950/60 border border-gray-900 rounded-lg p-3 sm:p-4 font-mono text-center md:text-left">
+                <p className="text-xl sm:text-2xl font-bold text-cyber-indigo">&lt;1ms Sync</p>
+                <p className="text-[9px] sm:text-[10px] text-gray-500 uppercase font-semibold tracking-wider">Redis WebSockets Targets</p>
               </div>
             </div>
           </section>
@@ -280,7 +280,7 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 font-sans">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-sans">
               <div className="bg-gray-950/60 border border-gray-900 rounded-lg p-5 space-y-3">
                 <h4 className="font-mono text-xs font-bold text-cyber-cyan">// System Languages</h4>
                 <div className="flex flex-wrap gap-1.5">
@@ -326,10 +326,10 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="glassmorphism rounded-lg border border-gray-800 p-6 text-left shadow-xl space-y-6">
-              <div className="bg-gray-950/80 px-4 py-2 border border-gray-900 rounded flex items-center justify-between text-xs font-mono">
+            <div className="glassmorphism rounded-lg border border-gray-800 p-5 sm:p-6 text-left shadow-xl space-y-6">
+              <div className="bg-gray-950/80 px-3 sm:px-4 py-2 border border-gray-900 rounded flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono gap-1.5">
                 <span className="text-gray-400">Endpoint:</span>
-                <span className="text-cyber-emerald font-bold">POST https://omerhabib62.io/api/contact</span>
+                <span className="text-cyber-emerald font-bold truncate">POST https://omerhabib62.io/api/contact</span>
               </div>
               
               {/* Linked Contact Form redirect fallback to email */}

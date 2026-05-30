@@ -20,7 +20,7 @@ export default function DevConsole() {
     <div className="space-y-1">
       <p className="text-cyber-cyan font-bold">Omer Bin Habib - Senior Systems Console v1.0.0</p>
       <p className="text-gray-400 text-sm">Type <span className="text-cyber-emerald font-semibold">help</span> to view available system commands or <span className="text-cyber-indigo font-semibold">curl -X GET /api/stats</span> to query developer metrics.</p>
-      <p className="text-gray-500 text-xs">--------------------------------------------------------------------------------</p>
+      <div className="border-t border-gray-800/80 my-2" />
     </div>
   );
 
@@ -249,7 +249,7 @@ export default function DevConsole() {
       </div>
 
       {/* Terminal Output Panel */}
-      <div className="flex-1 p-4 overflow-y-auto space-y-3 cyber-scrollbar bg-black/60 relative">
+      <div className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 cyber-scrollbar bg-black/60 relative">
         {/* Scanline Effect */}
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(0,0,0,0.15)_50%)] bg-[length:100%_4px] pointer-events-none" />
         
@@ -269,8 +269,9 @@ export default function DevConsole() {
       </div>
 
       {/* Terminal Input Line */}
-      <div className="bg-gray-950/80 p-3 border-t border-gray-900 flex items-center gap-2 text-sm">
-        <span className="text-cyber-cyan font-bold">omer@backend-terminal</span>
+      <div className="bg-gray-950/80 p-3 border-t border-gray-900 flex items-center gap-2 text-xs sm:text-sm">
+        <span className="text-cyber-cyan font-bold hidden sm:inline">omer@backend-terminal</span>
+        <span className="text-cyber-cyan font-bold sm:hidden">omer</span>
         <span className="text-cyber-emerald font-bold">❯</span>
         <input
           ref={inputRef}
