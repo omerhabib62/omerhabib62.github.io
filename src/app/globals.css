@@ -1,14 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #030712; /* Deep Slate/Black */
-  --foreground: #f3f4f6; /* Off-white */
+  --background: #f4f4f6; /* Cool off-white/light gray */
+  --foreground: #1e1b24; /* Rich dark slate/purple-charcoal */
   
-  --card-bg: rgba(17, 24, 39, 0.7);
-  --card-border: rgba(31, 41, 55, 0.6);
-  --accent-cyan: #06b6d4;
-  --accent-emerald: #10b981;
-  --accent-indigo: #6366f1;
+  --card-bg: #ffffff;
+  --card-border: #e4e4e9;
+  
+  /* Premier League Branding Colors */
+  --pl-purple: #38003c;    /* Deep Signature Purple */
+  --pl-lime: #00ff87;      /* Iconic Neon Green */
+  --pl-magenta: #ff007a;   /* Electric Pink/Magenta */
+  --pl-cyan: #04f5ff;      /* Electric Cyan/Blue */
+  --pl-dark-gray: #1f1f23;
+  --pl-light-gray: #f9f9fb;
 }
 
 @theme {
@@ -18,25 +23,27 @@
   --color-card-bg: var(--card-bg);
   --color-card-border: var(--card-border);
   
-  --color-cyber-cyan: var(--accent-cyan);
-  --color-cyber-emerald: var(--accent-emerald);
-  --color-cyber-indigo: var(--accent-indigo);
+  --color-pl-purple: var(--pl-purple);
+  --color-pl-lime: var(--pl-lime);
+  --color-pl-magenta: var(--pl-magenta);
+  --color-pl-cyan: var(--pl-cyan);
+  --color-pl-dark: var(--pl-dark-gray);
+  --color-pl-light: var(--pl-light-gray);
 
   --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   
-  --animate-pulse-glow: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-pulse-glow: pulse-glow 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-float-slower: float-slower 8s ease-in-out infinite;
-  --animate-scanline: scanline 6s linear infinite;
   
   @keyframes pulse-glow {
     0%, 100% {
-      opacity: 0.15;
-      box-shadow: 0 0 15px rgba(6, 182, 212, 0.1);
+      opacity: 0.2;
+      box-shadow: 0 0 15px rgba(56, 0, 60, 0.08);
     }
     50% {
-      opacity: 0.3;
-      box-shadow: 0 0 25px rgba(6, 182, 212, 0.25);
+      opacity: 0.45;
+      box-shadow: 0 0 25px rgba(56, 0, 60, 0.18);
     }
   }
 
@@ -45,71 +52,64 @@
       transform: translateY(0px) scale(1);
     }
     50% {
-      transform: translateY(-8px) scale(1.02);
-    }
-  }
-
-  @keyframes scanline {
-    0% {
-      transform: translateY(-100%);
-    }
-    100% {
-      transform: translateY(100%);
+      transform: translateY(-8px) scale(1.015);
     }
   }
 }
 
-/* Custom CSS Utility Classes */
+/* Custom CSS Utility Classes matching Premier League Visual Language */
 @layer utilities {
-  .bg-cyber-grid {
-    background-size: 40px 40px;
+  .bg-pl-grid {
+    background-size: 50px 50px;
     background-image: 
-      linear-gradient(to right, rgba(31, 41, 55, 0.25) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(31, 41, 55, 0.25) 1px, transparent 1px);
+      linear-gradient(to right, rgba(56, 0, 60, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(56, 0, 60, 0.02) 1px, transparent 1px);
   }
   
-  .bg-radial-gradient {
-    background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 60%);
+  .bg-pl-radial {
+    background: radial-gradient(circle at 50% 50%, rgba(56, 0, 60, 0.04) 0%, transparent 70%);
   }
 
-  .glassmorphism {
-    background: rgba(17, 24, 39, 0.65);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+  .pl-card-shadow {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.035), 0 1px 3px rgba(0, 0, 0, 0.015);
   }
   
-  .glassmorphism-glow-cyan {
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.05);
-    border-color: rgba(6, 182, 212, 0.15);
+  .pl-card-shadow-hover:hover {
+    box-shadow: 0 12px 30px rgba(56, 0, 60, 0.075), 0 2px 8px rgba(56, 0, 60, 0.02);
   }
 
-  .glassmorphism-glow-emerald {
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.05);
-    border-color: rgba(16, 185, 129, 0.15);
+  .text-glow-purple {
+    text-shadow: 0 0 8px rgba(56, 0, 60, 0.15);
   }
 
-  .text-glow-cyan {
-    text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
-  }
-
-  .text-glow-green {
-    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
-  }
-
-  .cyber-scrollbar::-webkit-scrollbar {
+  .pl-scrollbar::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
-  .cyber-scrollbar::-webkit-scrollbar-track {
-    background: rgba(17, 24, 39, 0.5);
+  .pl-scrollbar::-webkit-scrollbar-track {
+    background: rgba(244, 244, 246, 0.5);
   }
-  .cyber-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(75, 85, 99, 0.5);
+  .pl-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(56, 0, 60, 0.15);
     border-radius: 3px;
   }
-  .cyber-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(6, 182, 212, 0.7);
+  .pl-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 0, 60, 0.4);
+  }
+
+  /* Ribbon accent line top */
+  .pl-top-ribbon {
+    position: relative;
+  }
+  .pl-top-ribbon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--pl-purple), var(--pl-magenta), var(--pl-lime));
+    border-radius: 4px 4px 0 0;
   }
 }
 
@@ -117,4 +117,5 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
+  font-family: var(--font-sans);
 }

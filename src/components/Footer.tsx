@@ -2,24 +2,24 @@ import { Cpu } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-900 bg-gray-950/60 py-10 font-mono text-xs text-gray-500">
+    <footer className="border-t border-gray-200 bg-white py-10 font-mono text-xs text-slate-500">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Brand & Stack Info */}
         <div className="flex flex-col items-center md:items-start gap-1">
-          <div className="flex items-center gap-2 text-white font-bold">
-            <Cpu className="w-4 h-4 text-cyber-cyan" />
-            <span>omerhabib<span className="text-cyber-cyan">.io</span></span>
+          <div className="flex items-center gap-2 text-pl-purple font-bold">
+            <Cpu className="w-4 h-4 text-pl-purple" />
+            <span>omerhabib<span className="text-pl-magenta">.io</span></span>
           </div>
-          <p className="text-gray-600 text-[10px]">
+          <p className="text-slate-400 text-[10px]">
             Engineered on Next.js 16 + Tailwind CSS v4. Fully static-optimized.
           </p>
         </div>
 
         {/* System Telemetry & Status */}
-        <div className="flex items-center gap-2 bg-gray-950 px-3 py-1.5 rounded border border-gray-900 text-[10px]">
-          <span className="w-1.5 h-1.5 rounded-full bg-cyber-emerald animate-ping" />
-          <span className="text-gray-400">System Telemetry:</span>
-          <span className="text-cyber-emerald font-bold">100% Operational</span>
+        <div className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded border border-gray-200 text-[10px]">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+          <span className="text-slate-500">System Telemetry:</span>
+          <span className="text-emerald-600 font-bold">100% Operational</span>
         </div>
 
         {/* Social Icons & Copyright */}
@@ -29,7 +29,7 @@ export default function Footer() {
               href="https://github.com/omerhabib62" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="hover:text-white transition-colors"
+              className="text-slate-400 hover:text-pl-purple transition-colors"
               title="GitHub"
             >
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -40,7 +40,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/omer-bin-habib/" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="hover:text-white transition-colors"
+              className="text-slate-400 hover:text-pl-purple transition-colors"
               title="LinkedIn"
             >
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -51,13 +51,13 @@ export default function Footer() {
               href="https://medium.com/@omer.habib" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="hover:text-white transition-colors"
+              className="text-slate-400 hover:text-pl-purple transition-colors flex items-center"
               title="Medium"
             >
-              <span className="font-sans font-bold text-xs hover:text-white transition-colors">M</span>
+              <span className="font-sans font-bold text-xs hover:text-pl-purple transition-colors">M</span>
             </a>
           </div>
-          <p className="text-[10px] text-gray-600">
+          <p className="text-[10px] text-slate-400">
             © {new Date().getFullYear()} Omer Bin Habib. All systems reserved.
           </p>
         </div>

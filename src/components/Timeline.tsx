@@ -63,38 +63,38 @@ export default function Timeline() {
   ];
 
   return (
-    <div className="relative border-l border-gray-800 ml-4 md:ml-6 space-y-8 font-sans">
+    <div className="relative border-l border-gray-200 ml-4 md:ml-6 space-y-8 font-sans">
       {experiences.map((exp, idx) => (
         <div key={idx} className="relative pl-6 md:pl-8 group">
           {/* Glowing Anchor Point */}
-          <div className="absolute -left-[6px] top-1.5 w-3 h-3 rounded-full bg-gray-950 border-2 border-gray-700 group-hover:border-cyber-cyan group-hover:bg-cyber-cyan/20 group-hover:shadow-[0_0_10px_rgba(6,182,212,0.8)] transition-all duration-300" />
+          <div className="absolute -left-[6px] top-1.5 w-3 h-3 rounded-full bg-white border-2 border-gray-300 group-hover:border-pl-purple group-hover:bg-pl-purple/15 group-hover:shadow-[0_0_8px_rgba(56,0,60,0.4)] transition-all duration-300" />
 
           {/* Time Tag */}
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-mono text-gray-500 mb-2">
-            <span className="flex items-center gap-1">
-              <Calendar className="w-3.5 h-3.5" /> {exp.period}
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-mono text-slate-400 mb-2">
+            <span className="flex items-center gap-1 font-bold">
+              <Calendar className="w-3.5 h-3.5 text-slate-400" /> {exp.period}
             </span>
-            <span className="flex items-center gap-1">
-              <MapPin className="w-3.5 h-3.5" /> {exp.location}
+            <span className="flex items-center gap-1 font-bold">
+              <MapPin className="w-3.5 h-3.5 text-slate-400" /> {exp.location}
             </span>
           </div>
 
           {/* Core Content */}
           <div className="space-y-3">
             <div>
-              <h4 className="font-bold text-white text-base group-hover:text-cyber-cyan transition-colors">
+              <h4 className="font-bold text-slate-850 text-base group-hover:text-pl-purple transition-colors">
                 {exp.role}
               </h4>
-              <p className="text-xs text-cyber-emerald font-mono font-semibold">
+              <p className="text-xs text-pl-purple font-mono font-bold">
                 {exp.company}
               </p>
             </div>
 
             {/* List Achievements */}
-            <ul className="space-y-2 text-xs text-gray-400 leading-relaxed list-none pl-0">
+            <ul className="space-y-2 text-xs text-slate-600 leading-relaxed list-none pl-0">
               {exp.description.map((bullet, bIdx) => (
                 <li key={bIdx} className="relative pl-4">
-                  <span className="absolute left-0 text-cyber-indigo font-bold">›</span>
+                  <span className="absolute left-0 text-pl-magenta font-bold">›</span>
                   {bullet}
                 </li>
               ))}
@@ -106,7 +106,7 @@ export default function Timeline() {
                 {exp.skills.map((skill, sIdx) => (
                   <span
                     key={sIdx}
-                    className="text-[9px] font-mono bg-black/40 border border-gray-900 text-gray-500 px-2 py-0.5 rounded"
+                    className="text-[9px] font-mono bg-slate-100 border border-gray-200 text-slate-500 px-2 py-0.5 rounded"
                   >
                     {skill}
                   </span>

@@ -153,75 +153,75 @@ export default function ApiExplorer() {
 
   return (
     <div className="space-y-4">
-      <div className="border border-gray-800 rounded-lg overflow-hidden glassmorphism">
+      <div className="border border-gray-200 rounded-lg overflow-hidden bg-white pl-card-shadow font-sans">
         {/* API Title Header */}
-        <div className="bg-gray-950/80 px-4 py-3 flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-800 font-mono text-xs gap-2">
+        <div className="bg-pl-purple px-4 py-3 flex flex-col sm:flex-row sm:items-center justify-between border-b border-pl-purple font-mono text-xs gap-2 text-white">
           <div className="flex items-center gap-2 self-start sm:self-auto">
-            <Terminal className="w-4 h-4 text-cyber-emerald" />
-            <span className="font-bold text-gray-400">interactive-api-swagger v2.1.0</span>
+            <Terminal className="w-4 h-4 text-pl-lime" />
+            <span className="font-bold text-slate-100">interactive-api-swagger v2.1.0</span>
           </div>
-          <div className="text-gray-500 flex items-center gap-1.5 self-start sm:self-auto">
-            <span className="w-2 h-2 rounded-full bg-cyber-emerald animate-ping" /> Base URL: <span className="text-cyber-emerald">localhost:3000</span>
+          <div className="text-slate-300 flex items-center gap-1.5 self-start sm:self-auto font-bold">
+            <span className="w-2 h-2 rounded-full bg-pl-lime animate-ping" /> Base URL: <span className="text-pl-lime">localhost:3000</span>
           </div>
         </div>
 
         {/* Endpoints Loop */}
-        <div className="divide-y divide-gray-900">
+        <div className="divide-y divide-gray-200">
           {endpoints.map((ep, idx) => {
             const isExpanded = expandedIndex === idx;
             const isGet = ep.method === "GET";
-            const methodBg = isGet ? "bg-cyan-500/10 border-cyan-500/30 text-cyber-cyan" : "bg-emerald-500/10 border-emerald-500/30 text-cyber-emerald";
+            const methodBg = isGet ? "bg-cyan-50 border-cyan-200 text-cyan-700" : "bg-emerald-50 border-emerald-200 text-emerald-700";
             const result = results[idx];
 
             return (
-              <div key={idx} className="bg-black/25">
+              <div key={idx} className="bg-white">
                 {/* Expandable Title Bar */}
                 <button
                   onClick={() => setExpandedIndex(isExpanded ? null : idx)}
-                  className="w-full px-4 py-4 flex items-center justify-between hover:bg-white/2 cursor-pointer transition-colors text-left"
+                  className="w-full px-4 py-4 flex items-center justify-between hover:bg-slate-50 cursor-pointer transition-colors text-left"
                 >
                   <div className="flex flex-wrap items-center gap-3">
                     <span className={`px-2.5 py-1 rounded text-xs font-mono font-bold border ${methodBg}`}>
                       {ep.method}
                     </span>
-                    <span className="font-mono text-sm text-white font-bold">{ep.path}</span>
-                    <span className="text-xs text-gray-400 hidden md:inline">— {ep.summary}</span>
+                    <span className="font-mono text-sm text-slate-900 font-bold">{ep.path}</span>
+                    <span className="text-xs text-slate-500 hidden md:inline">— {ep.summary}</span>
                   </div>
                   <div>
                     {isExpanded ? (
-                      <ChevronUp className="w-4 h-4 text-gray-500" />
+                      <ChevronUp className="w-4 h-4 text-slate-500" />
                     ) : (
-                      <ChevronDown className="w-4 h-4 text-gray-500" />
+                      <ChevronDown className="w-4 h-4 text-slate-500" />
                     )}
                   </div>
                 </button>
 
                 {/* Expanded Box */}
                 {isExpanded && (
-                  <div className="px-4 sm:px-6 pb-6 pt-4 border-t border-gray-900/60 bg-black/40 space-y-6">
-                    <p className="text-sm text-gray-300 font-sans leading-relaxed">{ep.description}</p>
+                  <div className="px-4 sm:px-6 pb-6 pt-4 border-t border-gray-200 bg-slate-50/40 space-y-6">
+                    <p className="text-sm text-slate-600 font-sans leading-relaxed">{ep.description}</p>
 
                     {/* Parameters or Inputs */}
                     {ep.parameters && (
                       <div className="space-y-2">
-                        <h4 className="text-xs font-mono font-bold text-gray-400 uppercase tracking-wider">Query Parameters</h4>
+                        <h4 className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider">Query Parameters</h4>
                         <div className="overflow-x-auto">
-                          <table className="w-full text-xs font-mono text-left border-collapse border border-gray-900 rounded bg-black/30">
+                          <table className="w-full text-xs font-mono text-left border-collapse border border-gray-200 rounded bg-white">
                             <thead>
-                              <tr className="bg-gray-950/40 text-gray-400 border-b border-gray-900">
-                                <th className="p-2 border-r border-gray-900">Name</th>
-                                <th className="p-2 border-r border-gray-900">Type</th>
-                                <th className="p-2 border-r border-gray-900">Required</th>
+                              <tr className="bg-slate-50 text-slate-500 border-b border-gray-200">
+                                <th className="p-2 border-r border-gray-200">Name</th>
+                                <th className="p-2 border-r border-gray-200">Type</th>
+                                <th className="p-2 border-r border-gray-200">Required</th>
                                 <th className="p-2">Description</th>
                               </tr>
                             </thead>
                             <tbody>
                               {ep.parameters.map((p, pIdx) => (
-                                <tr key={pIdx} className="border-b border-gray-900/50">
-                                  <td className="p-2 font-bold text-white border-r border-gray-900">{p.name}</td>
-                                  <td className="p-2 border-r border-gray-900 text-cyber-cyan">{p.type}</td>
-                                  <td className="p-2 border-r border-gray-900 text-yellow-500">{p.required ? "true" : "false"}</td>
-                                  <td className="p-2 text-gray-400">{p.description} {p.default && `(default: ${p.default})`}</td>
+                                <tr key={pIdx} className="border-b border-gray-100">
+                                  <td className="p-2 font-bold text-slate-950 border-r border-gray-200">{p.name}</td>
+                                  <td className="p-2 border-r border-gray-200 text-pl-purple font-semibold">{p.type}</td>
+                                  <td className="p-2 border-r border-gray-200 text-pl-magenta font-semibold">{p.required ? "true" : "false"}</td>
+                                  <td className="p-2 text-slate-600">{p.description} {p.default && `(default: ${p.default})`}</td>
                                 </tr>
                               ))}
                             </tbody>
@@ -233,40 +233,40 @@ export default function ApiExplorer() {
                     {/* POST Request Body Inputs */}
                     {ep.method === "POST" && (
                       <div className="space-y-3">
-                        <h4 className="text-xs font-mono font-bold text-gray-400 uppercase tracking-wider">Request Parameters</h4>
+                        <h4 className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider">Request Parameters</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="space-y-3 bg-black/30 p-3 sm:p-4 rounded border border-gray-900">
+                          <div className="space-y-3 bg-white p-3 sm:p-4 rounded border border-gray-200 shadow-sm">
                             <div className="space-y-1">
-                              <label className="text-[10px] font-mono text-cyber-cyan font-bold block">NAME</label>
+                              <label className="text-[10px] font-mono text-slate-500 font-bold block">NAME</label>
                               <input
                                 type="text"
                                 value={inputs.name}
                                 onChange={(e) => handleInputChange("name", e.target.value)}
-                                className="w-full bg-gray-950 border border-gray-800 rounded px-2.5 py-1.5 text-xs text-white font-mono outline-none focus:border-cyber-cyan"
+                                className="w-full bg-slate-50 border border-gray-200 rounded px-2.5 py-1.5 text-xs text-slate-950 font-mono outline-none focus:border-pl-purple"
                               />
                             </div>
                             <div className="space-y-1">
-                              <label className="text-[10px] font-mono text-cyber-cyan font-bold block">EMAIL</label>
+                              <label className="text-[10px] font-mono text-slate-500 font-bold block">EMAIL</label>
                               <input
                                 type="email"
                                 value={inputs.email}
                                 onChange={(e) => handleInputChange("email", e.target.value)}
-                                className="w-full bg-gray-950 border border-gray-800 rounded px-2.5 py-1.5 text-xs text-white font-mono outline-none focus:border-cyber-cyan"
+                                className="w-full bg-slate-50 border border-gray-200 rounded px-2.5 py-1.5 text-xs text-slate-950 font-mono outline-none focus:border-pl-purple"
                               />
                             </div>
                             <div className="space-y-1">
-                              <label className="text-[10px] font-mono text-cyber-cyan font-bold block">MESSAGE</label>
+                              <label className="text-[10px] font-mono text-slate-500 font-bold block">MESSAGE</label>
                               <textarea
                                 value={inputs.message}
                                 rows={2}
                                 onChange={(e) => handleInputChange("message", e.target.value)}
-                                className="w-full bg-gray-950 border border-gray-800 rounded px-2.5 py-1.5 text-xs text-white font-mono outline-none focus:border-cyber-cyan resize-none"
+                                className="w-full bg-slate-50 border border-gray-200 rounded px-2.5 py-1.5 text-xs text-slate-950 font-mono outline-none focus:border-pl-purple resize-none"
                               />
                             </div>
                           </div>
                           <div className="space-y-1.5">
-                            <label className="text-[10px] font-mono text-gray-400 block font-bold">RAW JSON STRUCTURE</label>
-                            <pre className="p-3 bg-gray-950 border border-gray-900 rounded text-[10px] font-mono text-gray-500 overflow-x-auto h-[125px] block py-4">
+                            <label className="text-[10px] font-mono text-slate-500 block font-bold">RAW JSON STRUCTURE</label>
+                            <pre className="p-3 bg-slate-50 border border-gray-200 rounded text-[10px] font-mono text-slate-500 overflow-x-auto h-[125px] block py-4">
 {`{
   "name": "${inputs.name}",
   "email": "${inputs.email}",
@@ -283,7 +283,7 @@ export default function ApiExplorer() {
                       <button
                         onClick={() => handleExecute(idx)}
                         disabled={loadingIndex === idx}
-                        className="px-4 py-2 bg-cyber-emerald hover:bg-emerald-600 active:scale-95 disabled:opacity-50 text-black font-semibold rounded font-mono text-xs cursor-pointer flex items-center gap-1.5 transition-all shadow-[0_0_15px_rgba(16,185,129,0.2)]"
+                        className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 active:scale-95 disabled:opacity-50 text-white font-bold rounded font-mono text-xs cursor-pointer flex items-center gap-1.5 transition-all shadow-sm"
                       >
                         {loadingIndex === idx ? (
                           <>
@@ -291,32 +291,32 @@ export default function ApiExplorer() {
                           </>
                         ) : (
                           <>
-                            <Play className="w-3.5 h-3.5 fill-black" /> EXECUTE ENDPOINT
+                            <Play className="w-3.5 h-3.5 fill-white" /> EXECUTE ENDPOINT
                           </>
                         )}
                       </button>
                       {result && (
-                        <div className="flex items-center gap-1.5 text-xs font-mono text-cyber-emerald">
-                          <CheckCircle2 className="w-4 h-4" /> SUCCESS • {result.time}
+                        <div className="flex items-center gap-1.5 text-xs font-mono text-emerald-600 font-bold">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500" /> SUCCESS • {result.time}
                         </div>
                       )}
                     </div>
 
                     {/* Execution Results */}
                     {result && (
-                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 border-t border-gray-900/80 pt-4">
+                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 border-t border-gray-200 pt-4">
                         <div className="lg:col-span-2 space-y-1.5">
-                          <label className="text-[10px] font-mono text-gray-400 block font-bold">RESPONSE BODY</label>
-                          <pre className="p-4 bg-gray-950 border border-gray-800 rounded text-xs font-mono text-cyber-cyan overflow-x-auto max-h-[300px] cyber-scrollbar">
+                          <label className="text-[10px] font-mono text-slate-500 block font-bold">RESPONSE BODY</label>
+                          <pre className="p-4 bg-slate-50 border border-gray-200 rounded text-xs font-mono text-slate-800 overflow-x-auto max-h-[300px] pl-scrollbar">
                             {result.body}
                           </pre>
                         </div>
                         <div className="space-y-1.5">
-                          <label className="text-[10px] font-mono text-gray-400 block font-bold">HEADERS</label>
-                          <pre className="p-3 bg-gray-950 border border-gray-800 rounded text-[10px] font-mono text-gray-500 overflow-x-auto max-h-[300px] cyber-scrollbar space-y-1">
+                          <label className="text-[10px] font-mono text-slate-500 block font-bold">HEADERS</label>
+                          <pre className="p-3 bg-slate-50 border border-gray-200 rounded text-[10px] font-mono text-slate-600 overflow-x-auto max-h-[300px] pl-scrollbar space-y-1">
                             {Object.entries(result.headers).map(([key, val]) => (
                               <div key={key} className="truncate">
-                                <span className="text-gray-400">{key}:</span> {val}
+                                <span className="text-slate-400 font-bold">{key}:</span> {val}
                               </div>
                             ))}
                           </pre>

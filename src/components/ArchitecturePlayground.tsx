@@ -105,21 +105,21 @@ export default function ArchitecturePlayground() {
 
   const getIcon = (type: ArchitectureNode["type"]) => {
     switch (type) {
-      case "input": return <Zap className="w-5 h-5 text-cyber-cyan" />;
-      case "process": return <Server className="w-5 h-5 text-cyber-indigo" />;
-      case "ai": return <Brain className="w-5 h-5 text-cyber-emerald" />;
-      case "data": return <Database className="w-5 h-5 text-amber-500" />;
+      case "input": return <Zap className="w-5 h-5 text-pl-purple" />;
+      case "process": return <Server className="w-5 h-5 text-indigo-600" />;
+      case "ai": return <Brain className="w-5 h-5 text-emerald-600" />;
+      case "data": return <Database className="w-5 h-5 text-amber-600" />;
       case "external": return <GitFork className="w-5 h-5 text-rose-500" />;
     }
   };
 
   const getNodeStyles = (type: ArchitectureNode["type"]) => {
     switch (type) {
-      case "input": return "border-cyber-cyan/30 bg-cyber-cyan/5 text-cyber-cyan shadow-[0_0_15px_rgba(6,182,212,0.05)]";
-      case "process": return "border-cyber-indigo/30 bg-cyber-indigo/5 text-cyber-indigo shadow-[0_0_15px_rgba(99,102,241,0.05)]";
-      case "ai": return "border-cyber-emerald/30 bg-cyber-emerald/5 text-cyber-emerald shadow-[0_0_15px_rgba(16,185,129,0.05)]";
-      case "data": return "border-amber-500/30 bg-amber-500/5 text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.05)]";
-      case "external": return "border-rose-500/30 bg-rose-500/5 text-rose-400 shadow-[0_0_15px_rgba(244,63,94,0.05)]";
+      case "input": return "border-cyan-200 bg-cyan-50/40 text-cyan-800 shadow-sm";
+      case "process": return "border-purple-200 bg-purple-50/40 text-pl-purple shadow-sm";
+      case "ai": return "border-emerald-200 bg-emerald-50/40 text-emerald-800 shadow-sm";
+      case "data": return "border-amber-200 bg-amber-50/40 text-amber-800 shadow-sm";
+      case "external": return "border-rose-200 bg-rose-50/40 text-rose-800 shadow-sm";
     }
   };
 
@@ -133,8 +133,8 @@ export default function ArchitecturePlayground() {
             onClick={() => setActiveProject(projId)}
             className={`px-4 py-2.5 rounded-md font-mono text-xs font-semibold border transition-all cursor-pointer ${
               activeProject === projId
-                ? "bg-gray-900 border-cyber-cyan text-cyber-cyan text-glow-cyan"
-                : "border-gray-800 bg-gray-950/40 text-gray-400 hover:text-white hover:border-gray-700"
+                ? "bg-pl-purple border-pl-purple text-white shadow-sm"
+                : "border-gray-200 bg-white text-slate-500 hover:text-slate-900 hover:border-gray-300"
             }`}
           >
             {flows[projId].id.toUpperCase()} MODULE
@@ -143,17 +143,17 @@ export default function ArchitecturePlayground() {
       </div>
 
       {/* Main Visual Arena */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 font-sans">
         {/* Visual Graph Panel */}
-        <div className="lg:col-span-2 glassmorphism rounded-lg p-6 flex flex-col justify-between min-h-[400px] border border-gray-800">
+        <div className="lg:col-span-2 bg-white pl-card-shadow rounded-lg p-6 flex flex-col justify-between min-h-[400px] border border-gray-200">
           <div>
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-800 pb-3 mb-4 gap-2">
-              <h4 className="font-sans font-bold text-white text-base sm:text-lg">{flows[activeProject].title}</h4>
-              <span className="text-xs font-mono bg-cyber-cyan/10 border border-cyber-cyan/20 px-2.5 py-1 rounded text-cyber-cyan font-semibold self-start sm:self-center">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-200 pb-3 mb-4 gap-2">
+              <h4 className="font-sans font-bold text-slate-900 text-base sm:text-lg">{flows[activeProject].title}</h4>
+              <span className="text-xs font-mono bg-pl-purple/10 border border-pl-purple/20 px-2.5 py-1 rounded text-pl-purple font-bold self-start sm:self-center">
                 {flows[activeProject].metric}
               </span>
             </div>
-            <p className="text-sm text-gray-400 font-sans mb-6 leading-relaxed">
+            <p className="text-sm text-slate-600 font-sans mb-6 leading-relaxed">
               {flows[activeProject].description}
             </p>
           </div>
@@ -167,17 +167,17 @@ export default function ArchitecturePlayground() {
                   className={`border rounded-lg p-4 flex flex-col justify-between gap-2 hover:scale-[1.02] transition-transform duration-300 ${getNodeStyles(node.type)}`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono font-bold opacity-60">
+                    <span className="text-[10px] font-mono font-bold opacity-60">
                       [{node.type.toUpperCase()}]
                     </span>
                     {getIcon(node.type)}
                   </div>
                   <div>
-                    <h5 className="font-sans font-bold text-white text-sm">{node.name}</h5>
-                    <p className="text-[11px] text-gray-400 leading-normal mt-1">{node.description}</p>
+                    <h5 className="font-sans font-bold text-slate-900 text-sm">{node.name}</h5>
+                    <p className="text-[11px] text-slate-500 leading-normal mt-1">{node.description}</p>
                   </div>
                   {node.tech && (
-                    <span className="text-[10px] font-mono opacity-80 border-t border-white/5 pt-1.5 mt-1 block">
+                    <span className="text-[10px] font-mono opacity-80 border-t border-slate-200/80 pt-1.5 mt-1 block">
                       ⚡ {node.tech}
                     </span>
                   )}
@@ -186,20 +186,20 @@ export default function ArchitecturePlayground() {
             </div>
           </div>
 
-          <div className="border-t border-gray-800/80 pt-4 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-gray-500 font-mono gap-1.5">
-            <span className="flex items-center gap-1.5 self-center sm:self-auto">
-              <Zap className="w-3.5 h-3.5 text-cyber-cyan animate-pulse" /> Live System Mock Engine
+          <div className="border-t border-gray-200 pt-4 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-500 font-mono gap-1.5">
+            <span className="flex items-center gap-1.5 self-center sm:self-auto text-pl-purple font-bold">
+              <Zap className="w-3.5 h-3.5 text-pl-magenta animate-pulse" /> Live System Mock Engine
             </span>
-            <span className="self-center sm:self-auto">Interactive Data Pipelines</span>
+            <span className="self-center sm:self-auto text-slate-400">Interactive Data Pipelines</span>
           </div>
         </div>
 
         {/* Explainers Sidebar */}
-        <div className="glassmorphism rounded-lg p-6 border border-gray-800 flex flex-col justify-between">
+        <div className="bg-white pl-card-shadow rounded-lg p-6 border border-gray-200 flex flex-col justify-between">
           <div className="space-y-4">
-            <div className="flex items-center gap-2 border-b border-gray-800 pb-3">
-              <BarChart2 className="w-4 h-4 text-cyber-emerald" />
-              <h4 className="font-sans font-bold text-white text-sm">System Pipeline Architecture</h4>
+            <div className="flex items-center gap-2 border-b border-gray-200 pb-3">
+              <BarChart2 className="w-4 h-4 text-pl-magenta" />
+              <h4 className="font-sans font-bold text-slate-900 text-sm">System Pipeline Architecture</h4>
             </div>
 
             <div className="space-y-4">
@@ -207,8 +207,8 @@ export default function ArchitecturePlayground() {
                 const parts = sentence.split(":");
                 return (
                   <div key={idx} className="space-y-1">
-                    <h5 className="text-xs font-mono font-bold text-cyber-emerald">❯ {parts[0]}</h5>
-                    <p className="text-xs text-gray-400 font-sans leading-relaxed pl-3 border-l border-gray-800">
+                    <h5 className="text-xs font-mono font-bold text-pl-purple">❯ {parts[0]}</h5>
+                    <p className="text-xs text-slate-600 font-sans leading-relaxed pl-3 border-l border-gray-200">
                       {parts[1]}
                     </p>
                   </div>
@@ -217,8 +217,8 @@ export default function ArchitecturePlayground() {
             </div>
           </div>
 
-          <div className="bg-black/40 border border-gray-800/80 rounded p-3 text-[11px] font-mono text-gray-500 mt-6">
-            <p className="text-cyber-indigo font-bold mb-1">// Growth Integration (MSBA)</p>
+          <div className="bg-slate-50 border border-gray-200 rounded p-3 text-[11px] font-mono text-slate-500 mt-6">
+            <p className="text-pl-purple font-bold mb-1">// Growth Integration (MSBA)</p>
             This backend architecture is optimized not just for sub-second database lookups, but also mapped to product metrics like LLM API budgets and customer conversion.
           </div>
         </div>
