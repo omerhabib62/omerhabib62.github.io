@@ -1,0 +1,121 @@
+import React from "react";
+import { Briefcase, Calendar, MapPin } from "lucide-react";
+
+interface TimelineItem {
+  role: string;
+  company: string;
+  location: string;
+  period: string;
+  description: string[];
+  skills?: string[];
+}
+
+export default function Timeline() {
+  const experiences: TimelineItem[] = [
+    {
+      role: "Senior Engineer & Growth Architect",
+      company: "Independent Consultant (UK & Global Remote)",
+      location: "Karachi (Hybrid) | London (Remote)",
+      period: "Jan 2026 – Present",
+      description: [
+        "Sole backend architect reporting directly to Founders, leading implementation and database configurations across three UK B2B SaaS startups.",
+        "Built Spot (AI Employee Mental Health Platform): engineered a clinical risk-scoring EWMA analysis pipeline, multi-LLM model routing gate (Claude Haiku to Sonnet fallback), Stripe seat-based prorated billing, and a multi-header CSV parsing ETL.",
+        "Architected Groops (Creator Social Platform): designed ACID ledger financial splits via Stripe Connect, BullMQ queue webhook ingestion, and pgvector + Redis hybrid search which slashed database load by 90%.",
+        "Developed Audit-this-engine (Agency Code-Intelligence): built a 7-tool static analysis fan-out process, and calculated full TAM/SAM market modeling using MSBA frameworks."
+      ],
+      skills: ["NestJS", "TypeScript", "Python", "BullMQ", "Redis", "pgvector", "Stripe Connect", "Claude API", "Jest", "Docker"]
+    },
+    {
+      role: "Software Engineer",
+      company: "Blocship",
+      location: "Karachi, Pakistan",
+      period: "May 2023 – Dec 2025",
+      description: [
+        "Formulated strict SLO parameters and optimized a low-latency messaging architecture using WebSockets (Socket.io) + Redis event emitters with sub-millisecond sync targets.",
+        "Refactored legacy services into modular NestJS boilerplate systems, standardizing test pipelines and decreasing production error occurrences by 40%.",
+        "Drove API-first microservices adoption, enabling frontend and backend teams to run parallel sprints seamlessly."
+      ],
+      skills: ["Node.js", "ExpressJS", "Laravel", "NestJS", "Socket.io", "Redis", "PostgreSQL", "TypeORM"]
+    },
+    {
+      role: "Software Engineer",
+      company: "Sybrid (Pvt) Ltd (A Lakson Group Company)",
+      location: "Karachi, Pakistan",
+      period: "April 2021 – May 2023",
+      description: [
+        "Led requirements and database schemas for FiTE, a cross-border (Japan-Pakistan) multi-persona recruitment ecosystem, ensuring full compliance with OWASP secure coding procedures.",
+        "Developed internal resource administration and task-backlog dashboards to automate resource distribution pipelines across multiple client verticals.",
+        "Built secure multilingual APIs utilizing LAMP stack with strict rate limiting rules."
+      ],
+      skills: ["PHP", "Laravel", "MySQL", "AWS S3", "Docker", "REST APIs", "OWASP Security"]
+    },
+    {
+      role: "Associate Developer",
+      company: "TAFSOL Technologies (Pvt) Ltd",
+      location: "Karachi, Pakistan",
+      period: "Sept 2020 – April 2021",
+      description: [
+        "Integrated multi-channel payment gateways and developed dynamic content builders in custom PHP applications.",
+        "Recognized as Employee of the Month (October 2020) for outstanding product delivery and API integrations."
+      ],
+      skills: ["PHP", "JavaScript", "MySQL", "HTML5", "CSS3", "API Integrations"]
+    }
+  ];
+
+  return (
+    <div className="relative border-l border-gray-800 ml-4 md:ml-6 space-y-8 font-sans">
+      {experiences.map((exp, idx) => (
+        <div key={idx} className="relative pl-6 md:pl-8 group">
+          {/* Glowing Anchor Point */}
+          <div className="absolute -left-[6px] top-1.5 w-3 h-3 rounded-full bg-gray-950 border-2 border-gray-700 group-hover:border-cyber-cyan group-hover:bg-cyber-cyan/20 group-hover:shadow-[0_0_10px_rgba(6,182,212,0.8)] transition-all duration-300" />
+
+          {/* Time Tag */}
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-mono text-gray-500 mb-2">
+            <span className="flex items-center gap-1">
+              <Calendar className="w-3.5 h-3.5" /> {exp.period}
+            </span>
+            <span className="flex items-center gap-1">
+              <MapPin className="w-3.5 h-3.5" /> {exp.location}
+            </span>
+          </div>
+
+          {/* Core Content */}
+          <div className="space-y-3">
+            <div>
+              <h4 className="font-bold text-white text-base group-hover:text-cyber-cyan transition-colors">
+                {exp.role}
+              </h4>
+              <p className="text-xs text-cyber-emerald font-mono font-semibold">
+                {exp.company}
+              </p>
+            </div>
+
+            {/* List Achievements */}
+            <ul className="space-y-2 text-xs text-gray-400 leading-relaxed list-none pl-0">
+              {exp.description.map((bullet, bIdx) => (
+                <li key={bIdx} className="relative pl-4">
+                  <span className="absolute left-0 text-cyber-indigo font-bold">›</span>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+
+            {/* Skill Chips */}
+            {exp.skills && (
+              <div className="flex flex-wrap gap-1.5 pt-2">
+                {exp.skills.map((skill, sIdx) => (
+                  <span
+                    key={sIdx}
+                    className="text-[9px] font-mono bg-black/40 border border-gray-900 text-gray-500 px-2 py-0.5 rounded"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
