@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import DevConsole from "@/components/DevConsole";
@@ -22,6 +24,16 @@ import {
 } from "lucide-react";
 
 export default function Home() {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const consoleElement = document.getElementById("console");
+      if (consoleElement) {
+        consoleElement.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const featuredProjects = [
     {
       title: "DostAI — AI-Native Nutrition Tracker",

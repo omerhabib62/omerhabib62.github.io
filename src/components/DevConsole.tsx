@@ -13,7 +13,7 @@ export default function DevConsole() {
   const [input, setInput] = useState("");
   const [isMinimized, setIsMinimized] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
-  const consoleEndRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const welcomeMessage = (
@@ -29,8 +29,8 @@ export default function DevConsole() {
   }, []);
 
   useEffect(() => {
-    if (consoleEndRef.current) {
-      consoleEndRef.current.scrollIntoView({ behavior: "smooth" });
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
     }
   }, [history]);
 
@@ -249,7 +249,10 @@ export default function DevConsole() {
       </div>
 
       {/* Terminal Output Panel */}
-      <div className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 cyber-scrollbar bg-black/60 relative">
+      <div 
+        ref={scrollContainerRef}
+        className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 cyber-scrollbar bg-black/60 relative"
+      >
         {/* Scanline Effect */}
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(0,0,0,0.15)_50%)] bg-[length:100%_4px] pointer-events-none" />
         
@@ -265,7 +268,6 @@ export default function DevConsole() {
             <div className="pl-4">{item.output}</div>
           </div>
         ))}
-        <div ref={consoleEndRef} />
       </div>
 
       {/* Terminal Input Line */}
