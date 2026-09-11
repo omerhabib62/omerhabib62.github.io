@@ -20,7 +20,7 @@ export default function Timeline() {
       description: [
         "Sole backend architect reporting directly to Founders, leading implementation and database configurations across three UK B2B SaaS startups.",
         "Built Spot (AI Employee Mental Health Platform): engineered a clinical risk-scoring EWMA analysis pipeline, multi-LLM model routing gate (Claude Haiku to Sonnet fallback), Stripe seat-based prorated billing, and a multi-header CSV parsing ETL.",
-        "Architected Groops (Creator Social Platform): designed ACID ledger financial splits via Stripe Connect, BullMQ queue webhook ingestion, and pgvector + Redis hybrid search in place of scan-based text queries.",
+        "Continued on Groops, first built at Blocship: ACID ledger financial splits via Stripe Connect, BullMQ queue webhook ingestion, and pgvector + Redis hybrid search in place of scan-based text queries.",
         "Developed Audit-this-engine (Agency Code-Intelligence): built a 7-tool static analysis fan-out process, and calculated full TAM/SAM market modeling using MSBA frameworks."
       ],
       skills: ["NestJS", "TypeScript", "Python", "BullMQ", "Redis", "pgvector", "Stripe Connect", "Claude API", "Jest", "Docker"]
@@ -31,11 +31,13 @@ export default function Timeline() {
       location: "Karachi, Pakistan",
       period: "May 2023 – Dec 2025",
       description: [
-        "Formulated strict SLO parameters and optimized a low-latency messaging architecture using WebSockets (Socket.io) + Redis event emitters with sub-millisecond sync targets.",
-        "Refactored legacy services into modular NestJS boilerplate systems, standardizing test pipelines and decreasing production error occurrences by 40%.",
-        "Drove API-first microservices adoption, enabling frontend and backend teams to run parallel sprints seamlessly."
+        "Backend development across six production products in Node.js (Express, NestJS) and PHP (Laravel, Lumen), working in a cross-functional team with frontend, product, design and QA.",
+        "MaidMe (home services marketplace, Norway): the Laravel backend was already live and could not hold socket connections, so rather than rewrite a running product I added a dedicated NestJS socket server beside it for real-time booking and in-app support chat.",
+        "Groops (social platform for organisations): NestJS alongside a Lumen service, covering group membership and engagement — the project I later continued as an independent consultant.",
+        "QR-code points trading for payments (NestJS): point issuance, redemption and transfer written transactionally. Disgo (Express): streaming rooms with a social feed. Hubfiit and Apna Khata (Laravel): fitness tracking and an online produce marketplace.",
+        "Across all six: REST API design documented with Swagger, JWT authentication and input validation, MySQL and PostgreSQL data modelling and migrations, code review, and production support."
       ],
-      skills: ["Node.js", "ExpressJS", "Laravel", "NestJS", "Socket.io", "Redis", "PostgreSQL", "TypeORM"]
+      skills: ["Node.js", "ExpressJS", "NestJS", "Laravel", "Lumen", "Socket.io", "Redis", "PostgreSQL", "MySQL", "Swagger", "TypeORM"]
     },
     {
       role: "Software Engineer",
