@@ -31,11 +31,11 @@ export default function ApiExplorer() {
       description: "Returns professional summary, core tech stacks, and active growth parameters.",
       responseBody: {
         engineer: "Omer Bin Habib",
-        title: "Senior Backend Engineer & Growth Architect",
-        experience: "5+ Years",
+        title: "Backend Engineer — Node.js, TypeScript, PostgreSQL",
+        experience: "6+ Years",
         academics: {
           degree: "MS in Business Analytics (MSBA)",
-          institution: "KSBL (expected 2027)",
+          institution: "KSBL (expected Dec 2026)",
           focus: "Decision science, financial modeling, pricing frameworks"
         },
         focus_areas: [

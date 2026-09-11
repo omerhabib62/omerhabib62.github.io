@@ -18,7 +18,7 @@ export default function DevConsole() {
 
   const welcomeMessage = (
     <div className="space-y-1">
-      <p className="text-pl-purple font-bold">Omer Bin Habib - Senior Systems Console v1.0.0</p>
+      <p className="text-pl-purple font-bold">Omer Bin Habib - Developer Console v1.0.0</p>
       <p className="text-slate-600 text-sm">Type <span className="text-emerald-600 font-semibold">help</span> to view available system commands or <span className="text-pl-purple font-semibold">curl -X GET /api/stats</span> to query developer metrics.</p>
       <div className="border-t border-gray-200 my-2" />
     </div>
@@ -146,7 +146,7 @@ export default function DevConsole() {
         <pre className="text-slate-800 text-xs font-mono p-2.5 rounded bg-slate-100 overflow-x-auto border border-gray-200 pl-scrollbar">
 {`{
   "developer": "Omer Bin Habib",
-  "role": "Senior Backend Engineer / Growth Architect",
+  "role": "Backend Engineer (Node.js, TypeScript, PostgreSQL)",
   "status": "active_consulting",
   "metrics": {
     "years_of_experience": 6.2,

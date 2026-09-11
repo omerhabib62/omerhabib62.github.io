@@ -13,7 +13,7 @@ interface TimelineItem {
 export default function Timeline() {
   const experiences: TimelineItem[] = [
     {
-      role: "Senior Engineer & Growth Architect",
+      role: "Backend Engineer — Independent Consultant",
       company: "Independent Consultant (UK & Global Remote)",
       location: "Karachi (Hybrid) | London (Remote)",
       period: "Jan 2026 – Present",

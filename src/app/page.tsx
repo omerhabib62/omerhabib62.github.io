@@ -131,7 +131,7 @@ export default function Home() {
               {/* Dynamic Availability Tag */}
               <div className="inline-flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-full border border-gray-200 text-xs font-mono text-slate-700 shadow-sm font-bold">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                Available for Senior Consulting & Architecture Roles
+                Available now — full-time or contract
               </div>
 
               {/* Bold Title */}
@@ -141,14 +141,15 @@ export default function Home() {
               
               {/* Core Tagline */}
               <h2 className="text-lg sm:text-2xl md:text-3xl font-bold font-mono text-transparent bg-clip-text bg-gradient-to-r from-pl-purple via-pl-magenta to-pl-purple">
-                Senior Systems Engineer + Growth Architect
+                Backend Engineer · Node.js &amp; TypeScript · PostgreSQL
               </h2>
 
               <p className="max-w-3xl text-sm sm:text-base text-slate-600 font-sans font-medium leading-relaxed">
-                Karachi-based Senior Software Engineer (6+ YOE) & MSBA candidate at KSBL. 
-                I bridge product roadmap metrics and systems engineering to build production-grade APIs, 
-                high-throughput Redis event pipelines, pgvector vector search setups, and cost-optimized 
-                AI routing logic.
+                Karachi-based backend engineer with six years&apos; experience, and an MSBA candidate
+                at KSBL. I build REST APIs in Node.js and NestJS on PostgreSQL, along with the
+                reliability work around them — idempotent writes, retries, queue-based processing
+                and scheduled jobs. I also integrate LLMs where they earn their place, with
+                schema-validated output and tiered model routing to keep costs bounded.
               </p>
             </div>
 

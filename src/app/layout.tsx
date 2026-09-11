@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Omer Bin Habib | Senior Software Engineer & Growth Architect",
-  description: "Senior Software Engineer and Growth Architect specializing in NestJS, TypeScript, Python, and AI-native B2B SaaS system design. Experience in scalable backend architectures and data pipelines.",
+  title: "Omer Bin Habib | Backend Engineer — Node.js, TypeScript, PostgreSQL",
+  description: "Backend engineer with six years' experience building REST APIs in Node.js and NestJS on PostgreSQL — idempotent writes, retries, queue-based processing and scheduled jobs. Also Laravel, Docker, AWS and LLM integration. Karachi, available for remote work.",
 };
 
 export default function RootLayout({
