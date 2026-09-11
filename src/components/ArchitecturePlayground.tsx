@@ -30,7 +30,7 @@ export default function ArchitecturePlayground() {
     spot: {
       id: "spot",
       title: "Spot: Clinical Risk-Scoring & LLM Routing Engine",
-      metric: "99.8% System Uptime | Optimized Latency Fallback",
+      metric: "Tiered Model Routing | Latency Fallback",
       description: "An AI-powered employee mental health check-in platform. Features automated clinical risk scoring based on free-text inputs, historical user baseline drift calculations, and tiered LLM model routing.",
       nodes: [
         { id: "input", name: "User Check-In", type: "input", description: "Free-text mental wellness report, parsed via validation layers.", tech: "Next.js UI" },
@@ -56,7 +56,7 @@ export default function ArchitecturePlayground() {
     groops: {
       id: "groops",
       title: "Groops: Creator Monetization ledger & Query Engine",
-      metric: "90% Database Load Reduction | ACID Financial Ledger",
+      metric: "pgvector Hybrid Search | ACID Financial Ledger",
       description: "A community platform enabling nested user cohorts, Stripe Connect distribution layers, and high-throughput vector searching.",
       nodes: [
         { id: "stripe", name: "Stripe Connect Gateway", type: "external", description: "Collects community subscription sales.", tech: "Stripe Webhooks" },
@@ -73,7 +73,7 @@ export default function ArchitecturePlayground() {
       ],
       extendedExplainer: [
         "Double-entry bookkeeping: Multi-wallet splits and payouts are transactional, guaranteeing financial transactions either succeed completely or roll back safely.",
-        "90% Query Efficiency: Heavy text searches bypass raw relational DB execution by using pgvector embeddings layered over local Redis caching pools.",
+        "Query efficiency: heavy text searches bypass raw relational scans by using pgvector embeddings layered over Redis caching.",
         "Persistent Webhooks: Retriable BullMQ workers prevent dropped transactions, processing 100+ requests per minute under strict rate limiting thresholds."
       ]
     },

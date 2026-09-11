@@ -177,16 +177,16 @@ export default function Home() {
                 <p className="text-[9px] sm:text-[10px] text-slate-500 uppercase font-bold tracking-wider">Systems Dev</p>
               </div>
               <div className="bg-white border border-gray-200 pl-card-shadow rounded-lg p-3 sm:p-4 font-mono text-center md:text-left pl-top-ribbon pt-5">
-                <p className="text-xl sm:text-2xl font-black text-emerald-600">90% Reduction</p>
-                <p className="text-[9px] sm:text-[10px] text-slate-500 uppercase font-bold tracking-wider">Groops Database Load</p>
+                <p className="text-xl sm:text-2xl font-black text-emerald-600">pgvector</p>
+                <p className="text-[9px] sm:text-[10px] text-slate-500 uppercase font-bold tracking-wider">Hybrid Search on Groops</p>
               </div>
               <div className="bg-white border border-gray-200 pl-card-shadow rounded-lg p-3 sm:p-4 font-mono text-center md:text-left pl-top-ribbon pt-5">
                 <p className="text-xl sm:text-2xl font-black text-pl-magenta">357 Tests</p>
                 <p className="text-[9px] sm:text-[10px] text-slate-500 uppercase font-bold tracking-wider">Jest Code Coverage</p>
               </div>
               <div className="bg-white border border-gray-200 pl-card-shadow rounded-lg p-3 sm:p-4 font-mono text-center md:text-left pl-top-ribbon pt-5">
-                <p className="text-xl sm:text-2xl font-black text-indigo-600">&lt;1ms Sync</p>
-                <p className="text-[9px] sm:text-[10px] text-slate-500 uppercase font-bold tracking-wider">Redis WebSockets Targets</p>
+                <p className="text-xl sm:text-2xl font-black text-indigo-600">Socket.io</p>
+                <p className="text-[9px] sm:text-[10px] text-slate-500 uppercase font-bold tracking-wider">Real-Time Booking &amp; Chat</p>
               </div>
             </div>
           </section>

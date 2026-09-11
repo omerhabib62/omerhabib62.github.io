@@ -66,7 +66,7 @@ export default function ApiExplorer() {
             name: "Groops",
             segment: "B2B Social & Community Monetization",
             stack: ["NestJS", "PostgreSQL", "Upstash Redis", "Stripe Connect", "BullMQ"],
-            performance_gain: "pgvector hybrid search reduced database load by 90%",
+            implementation: "Replaced scan-based search with pgvector hybrid search (semantic + keyword), cutting database load substantially",
             modules: 13,
             migrations: 73
           },
@@ -74,7 +74,7 @@ export default function ApiExplorer() {
             name: "Spot",
             segment: "AI Mental Health Platform",
             stack: ["NestJS", "Claude API", "NeverBounce", "Postmark", "Jest"],
-            performance_gain: "99.8% uptime clinical risk alert pipeline with EWMA analysis",
+            implementation: "Clinical risk alert pipeline with EWMA baseline comparison and tiered alert classification",
             tests_coverage: "357 automated Jest tests"
           },
           {

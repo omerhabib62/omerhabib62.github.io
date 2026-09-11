@@ -92,7 +92,7 @@ export default function DevConsole() {
           <div className="space-y-3">
             <div className="border-l-2 border-pl-purple pl-3">
               <p className="font-bold text-slate-900">1. Groops — Community Monetization Backend</p>
-              <p className="text-xs text-slate-500">Stripe Connect financial ledgers, BullMQ/Redis webhook queues, pgvector hybrid search reducing DB load by <span className="text-emerald-600 font-semibold">90%</span>.</p>
+              <p className="text-xs text-slate-500">Stripe Connect financial ledgers, BullMQ/Redis webhook queues, pgvector hybrid search in place of scan-based text queries.</p>
             </div>
             <div className="border-l-2 border-emerald-500 pl-3">
               <p className="font-bold text-slate-900">2. Spot — AI Mental Health Platform</p>
@@ -152,9 +152,9 @@ export default function DevConsole() {
     "years_of_experience": 6.2,
     "primary_stack": ["NestJS", "TypeScript", "Python", "PostgreSQL", "Redis"],
     "performance_milestones": {
-      "groops_search_reduction_pct": 90.0,
-      "spot_backend_test_coverage_count": 357,
-      "messaging_sync_target": "<1ms"
+      "spot_backend_test_count": 357,
+      "groops_search": "pgvector hybrid (semantic + keyword)",
+      "maidme_realtime": "NestJS socket server beside a live Laravel backend"
     },
     "academic_integration": {
       "degree": "MSBA @ KSBL",

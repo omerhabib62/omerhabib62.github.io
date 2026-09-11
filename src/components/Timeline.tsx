@@ -20,7 +20,7 @@ export default function Timeline() {
       description: [
         "Sole backend architect reporting directly to Founders, leading implementation and database configurations across three UK B2B SaaS startups.",
         "Built Spot (AI Employee Mental Health Platform): engineered a clinical risk-scoring EWMA analysis pipeline, multi-LLM model routing gate (Claude Haiku to Sonnet fallback), Stripe seat-based prorated billing, and a multi-header CSV parsing ETL.",
-        "Architected Groops (Creator Social Platform): designed ACID ledger financial splits via Stripe Connect, BullMQ queue webhook ingestion, and pgvector + Redis hybrid search which slashed database load by 90%.",
+        "Architected Groops (Creator Social Platform): designed ACID ledger financial splits via Stripe Connect, BullMQ queue webhook ingestion, and pgvector + Redis hybrid search in place of scan-based text queries.",
         "Developed Audit-this-engine (Agency Code-Intelligence): built a 7-tool static analysis fan-out process, and calculated full TAM/SAM market modeling using MSBA frameworks."
       ],
       skills: ["NestJS", "TypeScript", "Python", "BullMQ", "Redis", "pgvector", "Stripe Connect", "Claude API", "Jest", "Docker"]
