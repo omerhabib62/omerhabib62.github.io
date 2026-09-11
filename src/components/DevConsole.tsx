@@ -48,11 +48,11 @@ export default function DevConsole() {
       response = (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-slate-700 py-1">
           <div><span className="text-pl-purple font-bold">help</span> - Display list of console commands</div>
-          <div><span className="text-emerald-600 font-bold">skills</span> - Print senior toolkit & stacks</div>
-          <div><span className="text-pl-purple font-bold">projects</span> - List high-impact SaaS deployments</div>
+          <div><span className="text-emerald-600 font-bold">skills</span> - Print toolkit & stacks</div>
+          <div><span className="text-pl-purple font-bold">projects</span> - List key projects</div>
           <div><span className="text-emerald-600 font-bold">experience</span> - Fetch engineering career history</div>
           <div><span className="text-indigo-600 font-bold">education</span> - Query degrees & certifications</div>
-          <div><span className="text-indigo-600 font-bold">curl -X GET /api/stats</span> - Print live developer JSON metrics</div>
+          <div><span className="text-indigo-600 font-bold">curl -X GET /api/stats</span> - Print developer profile as JSON</div>
           <div><span className="text-red-500 font-bold">sudo rm -rf /</span> - Attempt high-level core wipe</div>
           <div><span className="text-slate-500 font-bold">clear</span> - Purge terminal scrollback history</div>
         </div>
@@ -76,11 +76,11 @@ export default function DevConsole() {
             </div>
             <div>
               <p className="text-indigo-600 font-bold">// AI & LLM Systems</p>
-              <p className="text-xs text-slate-600">Claude/OpenAI APIs, LangGraph, DSPy, RAG pipelines, Langfuse observability</p>
+              <p className="text-xs text-slate-600">Claude/OpenAI APIs, LangGraph, pgvector hybrid retrieval, Langfuse observability</p>
             </div>
             <div>
               <p className="text-amber-600 font-bold">// DevOps & Cloud</p>
-              <p className="text-xs text-slate-600">AWS (EC2, RDS, S3), Docker, GitHub Actions CI/CD, Sentry, Prometheus, Grafana</p>
+              <p className="text-xs text-slate-600">AWS (Lambda, EC2, RDS, S3), Docker, GitHub Actions CI/CD, Sentry</p>
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@ export default function DevConsole() {
     } else if (trimmedCmd === "projects") {
       response = (
         <div className="space-y-3 text-sm text-slate-700">
-          <p className="text-pl-purple font-bold font-sans text-base"># Key Deployments & Impact</p>
+          <p className="text-pl-purple font-bold font-sans text-base"># Key Projects</p>
           <div className="space-y-3">
             <div className="border-l-2 border-pl-purple pl-3">
               <p className="font-bold text-slate-900">1. Groops — Community Monetization Backend</p>
@@ -96,11 +96,11 @@ export default function DevConsole() {
             </div>
             <div className="border-l-2 border-emerald-500 pl-3">
               <p className="font-bold text-slate-900">2. Spot — AI Mental Health Platform</p>
-              <p className="text-xs text-slate-500">6 modules, 357 Jest tests, EWMA risk scoring pipeline, tiered LLM model routing, CSV parser for 20+ headers.</p>
+              <p className="text-xs text-slate-500">357 automated tests, EWMA risk scoring pipeline, tiered LLM model routing, multi-header CSV parser.</p>
             </div>
             <div className="border-l-2 border-indigo-500 pl-3">
               <p className="font-bold text-slate-900">3. Audit-this-engine — Agency Code Intelligence Platform</p>
-              <p className="text-xs text-slate-500">7 static-analysis engines, BullMQ fan-out/fan-in, prompt caching, full financial market analysis (TAM/SAM/SOM).</p>
+              <p className="text-xs text-slate-500">Parallel static-analysis scanners, BullMQ fan-out/fan-in, prompt caching.</p>
             </div>
           </div>
         </div>
@@ -108,19 +108,19 @@ export default function DevConsole() {
     } else if (trimmedCmd === "experience") {
       response = (
         <div className="space-y-2 text-sm text-slate-700 font-mono">
-          <p className="text-indigo-600 font-bold font-sans"># Carrier Pipeline Logs</p>
+          <p className="text-indigo-600 font-bold font-sans"># Career History</p>
           <div className="space-y-2">
             <div>
-              <p className="text-slate-900 font-bold">[Jan 2026 - Present] Senior Engineer & Consultant (Independent)</p>
+              <p className="text-slate-900 font-bold">[Jan 2026 - Present] Software Engineer — Independent Consultant</p>
               <p className="text-xs text-slate-500">Designing architecture and AI/data pipelines for UK-based SaaS startups (Spot, Groops, Audit-this).</p>
             </div>
             <div>
               <p className="text-slate-900 font-bold">[May 2023 - Dec 2025] Software Engineer | Blocship</p>
-              <p className="text-xs text-slate-500">SLO definition, real-time commission engine optimization for 10K+ users, Socket.io + Redis integration.</p>
+              <p className="text-xs text-slate-500">Backend across six products in Express, NestJS and Laravel; a NestJS socket server for MaidMe's real-time booking and chat.</p>
             </div>
             <div>
               <p className="text-slate-900 font-bold">[Apr 2021 - May 2023] Software Engineer | Sybrid (Pvt) Ltd</p>
-              <p className="text-xs text-slate-500">Led multi-persona requirements (FiTE, recruitment platform), customized admin dashboards.</p>
+              <p className="text-xs text-slate-500">FiTE, a bilingual Laravel recruitment platform with four user roles; MySQL stored procedures for profile scoring.</p>
             </div>
           </div>
         </div>
@@ -129,7 +129,7 @@ export default function DevConsole() {
       response = (
         <div className="space-y-2 text-sm text-slate-700">
           <p className="text-pl-purple font-bold"># Education Registry</p>
-          <p className="text-slate-900 font-semibold">MS in Business Analytics (MSBA) <span className="text-slate-500 font-normal">| KSBL (Expected: 2027)</span></p>
+          <p className="text-slate-900 font-semibold">MS in Business Analytics (MSBA) <span className="text-slate-500 font-normal">| KSBL (Expected: Dec 2026)</span></p>
           <p className="text-xs text-emerald-600 pl-4">- Focusing on financial modeling, willingness-to-pay frameworks, and decision-science pipelines.</p>
           <p className="text-slate-900 font-semibold">BS in Computer Science (BSCS) <span className="text-slate-500 font-normal">| SZABIST (Graduated: 2020)</span></p>
           
@@ -146,7 +146,7 @@ export default function DevConsole() {
         <pre className="text-slate-800 text-xs font-mono p-2.5 rounded bg-slate-100 overflow-x-auto border border-gray-200 pl-scrollbar">
 {`{
   "developer": "Omer Bin Habib",
-  "role": "Backend Engineer (Node.js, TypeScript, PostgreSQL)",
+  "role": "Software Engineer, backend-focused (Node.js, TypeScript, PostgreSQL)",
   "status": "active_consulting",
   "metrics": {
     "years_of_experience": 6.2,
@@ -162,8 +162,7 @@ export default function DevConsole() {
     },
     "security_alignment": "OWASP-compliant",
     "availability": "Remote / UK & GCC timezone compatible"
-  },
-  "uptime_status": "100% Core Operational"
+  }
 }`}
         </pre>
       );

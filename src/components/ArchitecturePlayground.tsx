@@ -38,7 +38,7 @@ export default function ArchitecturePlayground() {
         { id: "router", name: "Tiered LLM Router", type: "ai", description: "Routes low-risk to Haiku. Triggers fallback to Claude Sonnet for high-confidence warnings.", tech: "Claude API / Prompt Caching" },
         { id: "batch", name: "Timezone Batch Jobs", type: "process", description: "Groups risk-signals into timezone-aware queues.", tech: "NestJS Scheduling" },
         { id: "postmark", name: "Verified Delivery", type: "external", description: "Dunning sync & NeverBounce verified communications.", tech: "Postmark / NeverBounce Webhooks" },
-        { id: "db", name: "Relational Ledger", type: "data", description: "18+ migrations, isolated GDPR-compliant data tables.", tech: "PostgreSQL / TypeORM" }
+        { id: "db", name: "Relational Ledger", type: "data", description: "18 migrations, isolated GDPR-compliant data tables.", tech: "PostgreSQL / TypeORM" }
       ],
       edges: [
         { from: "input", to: "nlp", label: "Free-Text Input" },
@@ -49,7 +49,7 @@ export default function ArchitecturePlayground() {
       ],
       extendedExplainer: [
         "Clinical Risk-Scoring: NLP pipeline extracts sentiments and matches clinical indicators, comparing user baseline signals via EWMA.",
-        "Model Cost Routing: Intelligent API gateways evaluate queries, routing standard reports to Claude Haiku (£) and escalating critical diagnostics to Claude Sonnet (£££). Saves up to 60% of LLM execution budget.",
+        "Model Cost Routing: Intelligent API gateways evaluate queries, routing standard reports to Claude Haiku (£) and escalating critical diagnostics to Claude Sonnet (£££), so the expensive model only runs where it matters.",
         "Timezone-Aware Delivery: Strict scheduling blocks emails during off-hours, queuing them in specialized redis clusters with NeverBounce verification."
       ]
     },
@@ -57,13 +57,13 @@ export default function ArchitecturePlayground() {
       id: "groops",
       title: "Groops: Creator Monetization ledger & Query Engine",
       metric: "pgvector Hybrid Search | ACID Financial Ledger",
-      description: "A community platform enabling nested user cohorts, Stripe Connect distribution layers, and high-throughput vector searching.",
+      description: "A community platform enabling nested user cohorts, Stripe Connect distribution layers, and pgvector hybrid search.",
       nodes: [
         { id: "stripe", name: "Stripe Connect Gateway", type: "external", description: "Collects community subscription sales.", tech: "Stripe Webhooks" },
         { id: "ledger", name: "ACID Ledger Engine", type: "process", description: "Enforces double-entry bookkeeping with strict zero discrepancy targets.", tech: "NestJS / PostgreSQL Transactions" },
         { id: "queues", name: "BullMQ Job Pools", type: "process", description: "Persistent, retriable task runners managing webhook queues.", tech: "Upstash Redis" },
         { id: "search", name: "Hybrid Search Engine", type: "ai", description: "pgvector vector similarity search + Redis cache index.", tech: "pgvector / Redis Caching" },
-        { id: "db", name: "Community Database", type: "data", description: "13 modules, 73 migrations, 81 tables.", tech: "PostgreSQL" }
+        { id: "db", name: "Community Database", type: "data", description: "16 modules, 73 migrations, 81 entities.", tech: "PostgreSQL" }
       ],
       edges: [
         { from: "stripe", to: "queues", label: "High-Throughput Webhooks" },
@@ -74,18 +74,18 @@ export default function ArchitecturePlayground() {
       extendedExplainer: [
         "Double-entry bookkeeping: Multi-wallet splits and payouts are transactional, guaranteeing financial transactions either succeed completely or roll back safely.",
         "Query efficiency: heavy text searches bypass raw relational scans by using pgvector embeddings layered over Redis caching.",
-        "Persistent Webhooks: Retriable BullMQ workers prevent dropped transactions, processing 100+ requests per minute under strict rate limiting thresholds."
+        "Persistent Webhooks: Retriable BullMQ workers prevent dropped transactions under strict rate limiting."
       ]
     },
     audit: {
       id: "audit",
       title: "Audit-this-engine: Fan-Out Code Analysis Orchestration",
-      metric: "7 Parallel Scanners | LLM Diagnostics Cache",
+      metric: "Parallel Scanners | LLM Diagnostics Cache",
       description: "Agency code-intelligence pipeline. Orchestrates multiple static analysis tools, caching prompts and caching diagnostic runs to analyze git codebases dynamically.",
       nodes: [
         { id: "scan", name: "Scan Endpoint", type: "input", description: "Receives raw Git URL payloads.", tech: "Express / Next" },
         { id: "fan", name: "Fan-Out Scheduler", type: "process", description: "Orchestrates parallel scanning jobs.", tech: "BullMQ Manager" },
-        { id: "scanners", name: "7 Static Analysis Tools", type: "process", description: "Independent micro-scanners processing code syntax.", tech: "Dockerized Security Frameworks" },
+        { id: "scanners", name: "Static Analysis Tools", type: "process", description: "Independent micro-scanners processing code syntax.", tech: "Dockerized Security Frameworks" },
         { id: "enricher", name: "LLM Diagnostic Enricher", type: "ai", description: "Applies Claude tool-calling & cache layers.", tech: "OpenAI / Claude API" },
         { id: "db", name: "Diagnostic Database", type: "data", description: "Stores persistent telemetry and scan traces.", tech: "PostgreSQL" }
       ],
@@ -96,9 +96,8 @@ export default function ArchitecturePlayground() {
         { from: "enricher", to: "db", label: "Persist Analysis" }
       ],
       extendedExplainer: [
-        "Fan-Out/Fan-In Pattern: Decomposes a single repo scan into 7 separate asynchronous scanner jobs running concurrently, speeding up analysis time by 5x.",
-        "Smart LLM Caching: Reuses structural prompts and analysis templates to minimize token overhead and keep API billing under strict bounds.",
-        "Market Validation: Backed by a full 6-layer MSBA sizing report, optimizing CAC, sales funnels, and willingness-to-pay tiers (£149 to £249/mo)."
+        "Fan-Out/Fan-In Pattern: Decomposes a single repo scan into separate asynchronous scanner jobs that run concurrently, then combines their reports.",
+        "Smart LLM Caching: Reuses structural prompts and analysis templates to minimize token overhead and keep API billing under strict bounds."
       ]
     }
   };
@@ -215,11 +214,6 @@ export default function ArchitecturePlayground() {
                 );
               })}
             </div>
-          </div>
-
-          <div className="bg-slate-50 border border-gray-200 rounded p-3 text-[11px] font-mono text-slate-500 mt-6">
-            <p className="text-pl-purple font-bold mb-1">// Growth Integration (MSBA)</p>
-            This backend architecture is optimized not just for sub-second database lookups, but also mapped to product metrics like LLM API budgets and customer conversion.
           </div>
         </div>
       </div>

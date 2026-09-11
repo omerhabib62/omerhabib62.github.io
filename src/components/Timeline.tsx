@@ -21,7 +21,7 @@ export default function Timeline() {
         "Sole backend architect reporting directly to Founders, leading implementation and database configurations across three UK B2B SaaS startups.",
         "Built Spot (AI Employee Mental Health Platform): engineered a clinical risk-scoring EWMA analysis pipeline, multi-LLM model routing gate (Claude Haiku to Sonnet fallback), Stripe seat-based prorated billing, and a multi-header CSV parsing ETL.",
         "Continued on Groops, first built at Blocship: ACID ledger financial splits via Stripe Connect, BullMQ queue webhook ingestion, and pgvector + Redis hybrid search in place of scan-based text queries.",
-        "Developed Audit-this-engine (Agency Code-Intelligence): built a 7-tool static analysis fan-out process, and calculated full TAM/SAM market modeling using MSBA frameworks."
+        "Developed Audit-this-engine (agency code intelligence): a fan-out pipeline running static-analysis scanners in parallel on BullMQ, with prompt caching on the LLM diagnostics layer."
       ],
       skills: ["NestJS", "TypeScript", "Python", "BullMQ", "Redis", "pgvector", "Stripe Connect", "Claude API", "Jest", "Docker"]
     },
@@ -45,11 +45,11 @@ export default function Timeline() {
       location: "Karachi, Pakistan",
       period: "April 2021 – May 2023",
       description: [
-        "Led requirements and database schemas for FiTE, a cross-border (Japan-Pakistan) multi-persona recruitment ecosystem, ensuring full compliance with OWASP secure coding procedures.",
-        "Developed internal resource administration and task-backlog dashboards to automate resource distribution pipelines across multiple client verticals.",
-        "Built secure multilingual APIs utilizing LAMP stack with strict rate limiting rules."
+        "FiTE: a bilingual (English/Japanese) Laravel recruitment platform for cross-border hiring between Japan and Pakistan, with role-based access across four user groups and OWASP-aligned security.",
+        "Built an internal project administration system for resource allocation and tracking.",
+        "MySQL stored procedures with window functions for candidate profile scoring, and a Dockerised reminder-email job running Laravel behind nginx."
       ],
-      skills: ["PHP", "Laravel", "MySQL", "AWS S3", "Docker", "REST APIs", "OWASP Security"]
+      skills: ["PHP", "Laravel", "MySQL", "Bootstrap", "jQuery", "Docker", "nginx", "AWS S3", "OWASP Security"]
     },
     {
       role: "Associate Developer",

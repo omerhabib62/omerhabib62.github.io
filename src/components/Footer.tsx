@@ -8,18 +8,11 @@ export default function Footer() {
         <div className="flex flex-col items-center md:items-start gap-1">
           <div className="flex items-center gap-2 text-pl-purple font-bold">
             <Cpu className="w-4 h-4 text-pl-purple" />
-            <span>omerhabib<span className="text-pl-magenta">.io</span></span>
+            <span>Omer Bin <span className="text-pl-magenta">Habib</span></span>
           </div>
           <p className="text-slate-400 text-[10px]">
             Engineered on Next.js 16 + Tailwind CSS v4. Fully static-optimized.
           </p>
-        </div>
-
-        {/* System Telemetry & Status */}
-        <div className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded border border-gray-200 text-[10px]">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-          <span className="text-slate-500">System Telemetry:</span>
-          <span className="text-emerald-600 font-bold">100% Operational</span>
         </div>
 
         {/* Social Icons & Copyright */}

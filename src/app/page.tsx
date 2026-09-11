@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import DevConsole from "@/components/DevConsole";
@@ -8,68 +8,87 @@ import ArchitecturePlayground from "@/components/ArchitecturePlayground";
 import ApiExplorer from "@/components/ApiExplorer";
 import ProjectCard from "@/components/ProjectCard";
 import Timeline from "@/components/Timeline";
-import { 
-  Server, 
-  Database, 
-  Brain, 
-  GitFork, 
-  ShieldAlert, 
-  Download, 
-  Send, 
-  Terminal, 
-  Cpu, 
-  Search,
+import {
+  Server,
+  Download,
+  Send,
+  Terminal,
+  Cpu,
+  GitFork,
   Briefcase,
   Layers
 } from "lucide-react";
 
 export default function Home() {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const consoleElement = document.getElementById("console");
-      if (consoleElement) {
-        consoleElement.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
-
   const featuredProjects = [
     {
-      title: "DostAI — AI-Native Nutrition Tracker",
-      description: "A high-performance wellness and diet planning platform replacing traditional entry logs with fluid natural language processing. Validated through strict Zod union assertions.",
-      tech: ["Next.js", "React", "Supabase", "Gemini API", "TypeScript", "Vercel"],
-      metrics: "AI-Native NLP Parser",
-      githubUrl: "https://github.com/omerhabib62/dost-fitness",
-      liveUrl: "https://dost-fitness.vercel.app/",
+      title: "Mercenary Starter API — NestJS Boilerplate",
+      description: "A dockerized, modular NestJS starter for SaaS backends, so a new project begins with access control, billing, security headers and API docs already wired in.",
+      tech: ["NestJS", "PostgreSQL", "Redis", "Stripe", "Docker", "Swagger"],
+      metrics: "Open-Source Backend Starter",
+      githubUrl: "https://github.com/omerhabib62/mercenary-api-starter",
       highlights: [
-        "Natural language logging converting user text into structured nutritional records.",
-        "Secure Supabase authentication and instant Postgres CRUD pipelines.",
-        "Dynamic calorie and zone computations engineered with zero-delay edge routing."
+        "Role-based access control and Stripe billing layers pre-integrated.",
+        "Security baseline with Helmet headers and rate limiting.",
+        "Docker configuration and full OpenAPI documentation out of the box."
       ]
     },
     {
-      title: "TaskBreak — AI Task Decomposer Agent",
-      description: "Next-gen agentic workflow demo that breaks massive, chaotic project briefs into structured, serial execution checklists automatically.",
+      title: "Groops — Community Platform Backend",
+      description: "Backend for a community monetisation platform, first built at Blocship and continued as independent consulting work.",
+      tech: ["NestJS", "TypeScript", "PostgreSQL", "pgvector", "Redis", "BullMQ", "Stripe Connect"],
+      metrics: "16 Modules · 73 Migrations · 81 Entities",
+      highlights: [
+        "Stripe Connect with an ACID-compliant ledger, so commission splits either complete fully or roll back.",
+        "Retriable BullMQ workers for webhook ingestion, so payment events are not dropped.",
+        "Replaced scan-based text search with pgvector hybrid search layered over Redis.",
+        "Clean Architecture across 16 NestJS modules, with 472 test suites."
+      ]
+    },
+    {
+      title: "MaidMe — Real-Time Booking Backend",
+      description: "Home services marketplace for providers in Norway. The Laravel backend was already live and couldn't hold socket connections, so rather than rewrite a running product I added a NestJS socket server beside it.",
+      tech: ["Laravel", "NestJS", "Socket.io"],
+      metrics: "Socket Server Beside a Live Backend",
+      highlights: [
+        "Real-time booking updates pushed to clients over WebSockets.",
+        "In-app support chat on the same socket server.",
+        "Laravel kept the business logic and data; the socket server handled only live connections."
+      ]
+    },
+    {
+      title: "ALLDost — Activity & Nutrition Tracker",
+      description: "A wellness app that turns plain-language meal and workout entries into structured records, with model output validated against Zod schemas.",
+      tech: ["Next.js", "React", "Supabase", "Gemini API", "TypeScript", "Vercel"],
+      metrics: "Natural-Language Parser",
+      githubUrl: "https://github.com/omerhabib62/dost-fitness",
+      liveUrl: "https://dost-fitness.vercel.app/",
+      highlights: [
+        "Plain-language logging converted into structured nutrition and activity records.",
+        "Supabase authentication with row-level security on PostgreSQL.",
+        "Cached food lookups, so repeated entries stop hitting the model."
+      ]
+    },
+    {
+      title: "TaskBreak — AI Task Decomposer",
+      description: "An agentic workflow demo that breaks long, unstructured project briefs into ordered, structured checklists.",
       tech: ["Next.js", "TypeScript", "Gemini Pro", "Supabase", "GitHub Actions"],
       metrics: "Agentic Task Decomposer",
       githubUrl: "https://github.com/omerhabib62/taskbreak",
       highlights: [
-        "Parses messy, unstructured lists into standardized database schemas.",
-        "Pre-configured GitHub actions managing automated continuous integrations.",
-        "Embedded webhook tracing monitoring downstream queue execution."
+        "Parses messy, unstructured lists into standardised database schemas.",
+        "GitHub Actions for continuous integration.",
+        "Webhook tracing to monitor downstream queue execution."
       ]
     },
     {
-      title: "Mercenary Starter API (Boilerplate)",
-      description: "A fully dockerized, modular starter ecosystem written in NestJS. Built specifically to eliminate boilerplate cycles for FinTech and high-load SaaS platforms.",
-      tech: ["NestJS", "PostgreSQL", "Redis", "Stripe", "Docker", "Swagger"],
-      metrics: "10+ Hours Saved Per Repo",
-      githubUrl: "https://github.com/omerhabib62/mercenary-api-starter",
+      title: "Apna Khata — Produce Marketplace Backend",
+      description: "Laravel backend for an online B2B fruit and vegetable marketplace, built at Blocship.",
+      tech: ["Laravel", "PHP", "MySQL", "AWS S3"],
+      metrics: "Laravel Marketplace",
       highlights: [
-        "Pre-integrated Role-Based Access Control (RBAC) and Stripe billing layers.",
-        "Security baseline equipped with Helmet headers and automated rate limiters.",
-        "Instantly compile-ready Docker configuration and full OpenAPI documentation."
+        "Marketplace backend for listing and trading fresh produce.",
+        "One of six production backends delivered at Blocship."
       ]
     },
     {
@@ -97,17 +116,6 @@ export default function Home() {
         "Generates interactive visualizations on cash margins instantly.",
         "Provides exportable reports matching standard audit criteria."
       ]
-    },
-    {
-      title: "Apna Khata B2B Wholesale Market",
-      description: "Custom digital bidding and trading platform automating agricultural produce inventory and price settling.",
-      tech: ["Laravel", "Node.js", "MySQL", "Socket.io", "AWS S3"],
-      metrics: "Real-time Auction Engine",
-      highlights: [
-        "Real-time farmer-to-distributor auction channels via WebSockets.",
-        "End-to-end perishable inventory logistics tracking.",
-        "Dynamic commission allocations on transactions."
-      ]
     }
   ];
 
@@ -124,8 +132,8 @@ export default function Home() {
         <div className="absolute bottom-1/4 left-1/3 w-96 h-96 rounded-full bg-pl-lime/5 blur-[120px] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto space-y-24">
-          
-          {/* 1. Hero & Branding */}
+
+          {/* Hero & Branding */}
           <section className="text-center md:text-left pt-6 md:pt-12 space-y-6">
             <div className="space-y-4">
               {/* Dynamic Availability Tag */}
@@ -138,35 +146,35 @@ export default function Home() {
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight font-sans text-pl-purple">
                 Omer Bin Habib
               </h1>
-              
+
               {/* Core Tagline */}
               <h2 className="text-lg sm:text-2xl md:text-3xl font-bold font-mono text-transparent bg-clip-text bg-gradient-to-r from-pl-purple via-pl-magenta to-pl-purple">
-                Backend Engineer · Node.js &amp; TypeScript · PostgreSQL
+                Software Engineer · Backend-focused · Node.js, NestJS &amp; TypeScript · PostgreSQL
               </h2>
 
               <p className="max-w-3xl text-sm sm:text-base text-slate-600 font-sans font-medium leading-relaxed">
-                Karachi-based backend engineer with six years&apos; experience, and an MSBA candidate
-                at KSBL. I build REST APIs in Node.js and NestJS on PostgreSQL, along with the
-                reliability work around them — idempotent writes, retries, queue-based processing
-                and scheduled jobs. I also integrate LLMs where they earn their place, with
+                Karachi-based software engineer with six years&apos; experience, mostly on the backend,
+                and an MSBA candidate at KSBL. I build REST APIs in Node.js and NestJS on PostgreSQL,
+                along with the reliability work around them — idempotent writes, retries, queue-based
+                processing and scheduled jobs. I also integrate LLMs where they earn their place, with
                 schema-validated output and tiered model routing to keep costs bounded.
               </p>
             </div>
 
             {/* Micro Call-to-Actions */}
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
-              <a 
-                href="#contact" 
+              <a
+                href="#contact"
                 className="px-6 py-3 bg-pl-purple text-white font-bold rounded font-mono text-xs cursor-pointer hover:bg-slate-800 active:scale-95 transition-all shadow-[0_4px_15px_rgba(56,0,60,0.25)]"
               >
-                DISPATCH_PROPOSAL()
+                Contact me
               </a>
-              <a 
-                href="/resume.pdf" 
+              <a
+                href="/resume.pdf"
                 download="Omer_Bin_Habib_Resume.pdf"
                 className="px-6 py-3 bg-white border border-gray-200 text-slate-700 font-bold rounded font-mono text-xs cursor-pointer hover:border-pl-purple hover:text-pl-purple hover:shadow-sm active:scale-95 transition-all flex items-center gap-1.5"
               >
-                <Download className="w-4 h-4 text-slate-500" /> DOWNLOAD_RESUME.PDF
+                <Download className="w-4 h-4 text-slate-500" /> Download CV
               </a>
             </div>
 
@@ -174,7 +182,7 @@ export default function Home() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-8">
               <div className="bg-white border border-gray-200 pl-card-shadow rounded-lg p-3 sm:p-4 font-mono text-center md:text-left pl-top-ribbon pt-5">
                 <p className="text-xl sm:text-2xl font-black text-pl-purple">6+ YOE</p>
-                <p className="text-[9px] sm:text-[10px] text-slate-500 uppercase font-bold tracking-wider">Systems Dev</p>
+                <p className="text-[9px] sm:text-[10px] text-slate-500 uppercase font-bold tracking-wider">Software Engineering</p>
               </div>
               <div className="bg-white border border-gray-200 pl-card-shadow rounded-lg p-3 sm:p-4 font-mono text-center md:text-left pl-top-ribbon pt-5">
                 <p className="text-xl sm:text-2xl font-black text-emerald-600">pgvector</p>
@@ -182,7 +190,7 @@ export default function Home() {
               </div>
               <div className="bg-white border border-gray-200 pl-card-shadow rounded-lg p-3 sm:p-4 font-mono text-center md:text-left pl-top-ribbon pt-5">
                 <p className="text-xl sm:text-2xl font-black text-pl-magenta">357 Tests</p>
-                <p className="text-[9px] sm:text-[10px] text-slate-500 uppercase font-bold tracking-wider">Jest Code Coverage</p>
+                <p className="text-[9px] sm:text-[10px] text-slate-500 uppercase font-bold tracking-wider">Automated Tests (Spot)</p>
               </div>
               <div className="bg-white border border-gray-200 pl-card-shadow rounded-lg p-3 sm:p-4 font-mono text-center md:text-left pl-top-ribbon pt-5">
                 <p className="text-xl sm:text-2xl font-black text-indigo-600">Socket.io</p>
@@ -191,87 +199,31 @@ export default function Home() {
             </div>
           </section>
 
-          {/* 2. Interactive Terminal Console */}
-          <section id="console" className="space-y-4 text-center md:text-left">
-            <div className="space-y-1">
-              <h3 className="text-lg font-bold font-mono text-pl-purple flex items-center justify-center md:justify-start gap-2">
-                <Terminal className="w-5 h-5 text-pl-purple" /> 01 // Interactive Developer Shell
-              </h3>
-              <p className="text-xs text-slate-500 font-mono">
-                Execute local queries on Omer's system parameters in real time.
-              </p>
-            </div>
-            <DevConsole />
-          </section>
-
-          {/* 3. Systems Architecture Playground */}
-          <section id="architecture" className="space-y-4">
-            <div className="space-y-1 text-center md:text-left">
-              <h3 className="text-lg font-bold font-mono text-pl-purple flex items-center justify-center md:justify-start gap-2">
-                <Layers className="w-5 h-5 text-pl-purple" /> 02 // Interactive Systems Architecture
-              </h3>
-              <p className="text-xs text-slate-500 font-mono">
-                Click modules to audit details on event streams, LLM gateways, and payment ledger designs.
-              </p>
-            </div>
-            <ArchitecturePlayground />
-          </section>
-
-          {/* 4. REST API Explorer */}
-          <section id="api-explorer" className="space-y-4">
-            <div className="space-y-1 text-center md:text-left">
-              <h3 className="text-lg font-bold font-mono text-pl-purple flex items-center justify-center md:justify-start gap-2">
-                <Server className="w-5 h-5 text-pl-purple" /> 03 // Swagger REST API Explorer
-              </h3>
-              <p className="text-xs text-slate-500 font-mono">
-                Simulate HTTP requests and test response latency on our isolated backend APIs.
-              </p>
-            </div>
-            <ApiExplorer />
-          </section>
-
-          {/* 5. Featured Projects Grid */}
-          <section id="projects" className="space-y-6">
-            <div className="space-y-1 text-center md:text-left border-b border-gray-200 pb-4">
-              <h3 className="text-lg font-bold font-mono text-pl-purple flex items-center justify-center md:justify-start gap-2">
-                <GitFork className="w-5 h-5 text-pl-purple" /> 04 // Featured Deployments
-              </h3>
-              <p className="text-xs text-slate-500 font-mono">
-                Production-grade applications, AI agents, and open-source system packages.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredProjects.map((p, idx) => (
-                <ProjectCard key={idx} {...p} />
-              ))}
-            </div>
-          </section>
-
-          {/* 6. Experience Timeline */}
+          {/* 01. Experience Timeline */}
           <section id="experience" className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Career Left Bar */}
             <div className="lg:col-span-1 space-y-4 text-center lg:text-left font-sans">
               <div className="space-y-1">
                 <h3 className="text-lg font-bold font-mono text-pl-purple flex items-center justify-center lg:justify-start gap-2">
-                  <Briefcase className="w-5 h-5 text-pl-purple" /> 05 // Career Pipeline Log
+                  <Briefcase className="w-5 h-5 text-pl-purple" /> 01 // Experience
                 </h3>
                 <p className="text-xs text-slate-500 font-mono">
-                  Standardized path tracking work records and key accomplishments.
+                  Where I&apos;ve worked and what I built there.
                 </p>
               </div>
               <p className="text-xs text-slate-600 leading-relaxed font-medium">
-                6+ Years architecting backend structures for UK B2B startups, e-commerce networks, 
-                and recruitment platforms. Recognized for standardizing clean architectures, 
-                optimizing cache bounds, and slashing server overheads.
+                Six years building backends for UK SaaS founders, marketplaces and recruitment
+                platforms — NestJS and Laravel APIs, PostgreSQL and MySQL schemas, queues and
+                scheduled jobs.
               </p>
-              
+
               <div className="bg-white border border-gray-200 pl-card-shadow rounded-lg p-4 text-xs font-mono text-left pl-top-ribbon pt-5">
                 <p className="text-pl-purple font-bold mb-1">⚡ Core Highlights</p>
                 <div className="text-slate-500 space-y-1.5">
-                  <p>• 6+ Modules, 357 Jest tests for Spot platform</p>
-                  <p>• 13 modules, 73 migrations for Groops ledger</p>
-                  <p>• 7 micro-scanners fanned out in parallel queues</p>
-                  <p>• OWASP-compliant recruitment schema blueprints</p>
+                  <p>• 357 automated tests on the Spot backend</p>
+                  <p>• 16 NestJS modules, 73 migrations, 81 entities on Groops</p>
+                  <p>• NestJS socket server added beside a live Laravel backend (MaidMe)</p>
+                  <p>• OWASP-aligned bilingual recruitment platform (FiTE)</p>
                 </div>
               </div>
             </div>
@@ -282,46 +234,71 @@ export default function Home() {
             </div>
           </section>
 
-          {/* 7. Skill Matrix Grid */}
-          <section className="space-y-6">
+          {/* 02. Featured Projects Grid */}
+          <section id="projects" className="space-y-6">
             <div className="space-y-1 text-center md:text-left border-b border-gray-200 pb-4">
               <h3 className="text-lg font-bold font-mono text-pl-purple flex items-center justify-center md:justify-start gap-2">
-                <Cpu className="w-5 h-5 text-pl-purple" /> 06 // Stacks & Technical Toolkit
+                <GitFork className="w-5 h-5 text-pl-purple" /> 02 // Featured Projects
+              </h3>
+              <p className="text-xs text-slate-500 font-mono">
+                Backend systems, client products and open-source work.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featuredProjects.map((p, idx) => (
+                <ProjectCard key={idx} {...p} />
+              ))}
+            </div>
+          </section>
+
+          {/* 03. Skill Matrix Grid */}
+          <section id="skills" className="space-y-6">
+            <div className="space-y-1 text-center md:text-left border-b border-gray-200 pb-4">
+              <h3 className="text-lg font-bold font-mono text-pl-purple flex items-center justify-center md:justify-start gap-2">
+                <Cpu className="w-5 h-5 text-pl-purple" /> 03 // Stacks &amp; Technical Toolkit
               </h3>
               <p className="text-xs text-slate-500 font-mono">
                 System languages, databases, architectures, and cloud services used in daily workflows.
               </p>
             </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-sans">
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 font-sans">
               <div className="bg-white border border-gray-200 pl-card-shadow rounded-lg p-5 space-y-3">
                 <h4 className="font-mono text-xs font-bold text-pl-purple">// System Languages</h4>
                 <div className="flex flex-wrap gap-1.5">
-                  {["TypeScript", "Python", "JavaScript", "SQL (PostgreSQL)", "PHP", "HTML5/CSS3"].map((s, i) => (
+                  {["TypeScript", "JavaScript", "Python", "SQL (PostgreSQL)", "PHP", "HTML5/CSS3"].map((s, i) => (
                     <span key={i} className="text-[10px] font-mono bg-slate-100 border border-gray-200 px-2 py-0.5 rounded text-slate-600 hover:text-pl-purple cursor-default transition-colors">{s}</span>
                   ))}
                 </div>
               </div>
               <div className="bg-white border border-gray-200 pl-card-shadow rounded-lg p-5 space-y-3">
-                <h4 className="font-mono text-xs font-bold text-emerald-600">// Stacks & ORMs</h4>
+                <h4 className="font-mono text-xs font-bold text-emerald-600">// Frameworks &amp; ORMs</h4>
                 <div className="flex flex-wrap gap-1.5">
-                  {["NestJS (Clean)", "Next.js", "Node.js", "ExpressJS", "Laravel", "TypeORM", "LAMP Stack"].map((s, i) => (
+                  {["NestJS (Clean)", "Node.js", "ExpressJS", "Laravel", "Lumen", "Next.js", "TypeORM", "Socket.io"].map((s, i) => (
                     <span key={i} className="text-[10px] font-mono bg-slate-100 border border-gray-200 px-2 py-0.5 rounded text-slate-600 hover:text-pl-purple cursor-default transition-colors">{s}</span>
                   ))}
                 </div>
               </div>
               <div className="bg-white border border-gray-200 pl-card-shadow rounded-lg p-5 space-y-3">
-                <h4 className="font-mono text-xs font-bold text-pl-magenta">// Data & Message Queues</h4>
+                <h4 className="font-mono text-xs font-bold text-pl-magenta">// Data &amp; Message Queues</h4>
                 <div className="flex flex-wrap gap-1.5">
-                  {["PostgreSQL", "Redis", "BullMQ Ingestion", "pgvector (Hybrid Search)", "SQLite", "MySQL", "AWS S3"].map((s, i) => (
+                  {["PostgreSQL", "MySQL", "Redis", "BullMQ", "pgvector (Hybrid Search)", "SQLite", "AWS S3"].map((s, i) => (
                     <span key={i} className="text-[10px] font-mono bg-slate-100 border border-gray-200 px-2 py-0.5 rounded text-slate-600 hover:text-pl-purple cursor-default transition-colors">{s}</span>
                   ))}
                 </div>
               </div>
               <div className="bg-white border border-gray-200 pl-card-shadow rounded-lg p-5 space-y-3">
-                <h4 className="font-mono text-xs font-bold text-indigo-600">// AI & Observability</h4>
+                <h4 className="font-mono text-xs font-bold text-sky-600">// DevOps &amp; Testing</h4>
                 <div className="flex flex-wrap gap-1.5">
-                  {["Claude/OpenAI APIs", "LangGraph Agentic", "DSPy Pipelines", "RAG Structures", "Langfuse Tracing", "Sentry Errors", "Pino Logging"].map((s, i) => (
+                  {["Docker", "GitHub Actions", "Swagger / OpenAPI", "Jest", "Mocha", "AWS (Lambda, RDS, EC2)", "nginx"].map((s, i) => (
+                    <span key={i} className="text-[10px] font-mono bg-slate-100 border border-gray-200 px-2 py-0.5 rounded text-slate-600 hover:text-pl-purple cursor-default transition-colors">{s}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-white border border-gray-200 pl-card-shadow rounded-lg p-5 space-y-3">
+                <h4 className="font-mono text-xs font-bold text-indigo-600">// AI &amp; Observability</h4>
+                <div className="flex flex-wrap gap-1.5">
+                  {["Claude/OpenAI APIs", "LangGraph Agentic", "pgvector Hybrid Retrieval", "Langfuse Tracing", "Sentry Errors", "Pino Logging"].map((s, i) => (
                     <span key={i} className="text-[10px] font-mono bg-slate-100 border border-gray-200 px-2 py-0.5 rounded text-slate-600 hover:text-pl-purple cursor-default transition-colors">{s}</span>
                   ))}
                 </div>
@@ -329,33 +306,74 @@ export default function Home() {
             </div>
           </section>
 
-          {/* 8. Contact Form API Gateway */}
+          {/* 04. Playground — interactive demos */}
+          <section id="playground" className="space-y-12">
+            <div className="space-y-1 text-center md:text-left border-b border-gray-200 pb-4">
+              <h3 className="text-lg font-bold font-mono text-pl-purple flex items-center justify-center md:justify-start gap-2">
+                <Terminal className="w-5 h-5 text-pl-purple" /> 04 // Playground
+              </h3>
+              <p className="text-xs text-slate-500 font-mono">
+                Interactive pieces I built for this site — a terminal, an architecture explorer and a simulated API console.
+              </p>
+            </div>
+
+            <div id="console" className="space-y-4 text-center md:text-left">
+              <div className="space-y-1">
+                <h4 className="text-sm font-bold font-mono text-pl-purple flex items-center justify-center md:justify-start gap-2">
+                  <Terminal className="w-4 h-4 text-pl-purple" /> Developer Shell
+                </h4>
+                <p className="text-xs text-slate-500 font-mono">
+                  Type commands to query my experience and projects.
+                </p>
+              </div>
+              <DevConsole />
+            </div>
+
+            <div id="architecture" className="space-y-4">
+              <div className="space-y-1 text-center md:text-left">
+                <h4 className="text-sm font-bold font-mono text-pl-purple flex items-center justify-center md:justify-start gap-2">
+                  <Layers className="w-4 h-4 text-pl-purple" /> Systems Architecture
+                </h4>
+                <p className="text-xs text-slate-500 font-mono">
+                  Click a module to see how the event streams, LLM routing and payment ledger fit together.
+                </p>
+              </div>
+              <ArchitecturePlayground />
+            </div>
+
+            <div id="api-explorer" className="space-y-4">
+              <div className="space-y-1 text-center md:text-left">
+                <h4 className="text-sm font-bold font-mono text-pl-purple flex items-center justify-center md:justify-start gap-2">
+                  <Server className="w-4 h-4 text-pl-purple" /> REST API Explorer
+                </h4>
+                <p className="text-xs text-slate-500 font-mono">
+                  Simulated requests against a mock API, showing how I document and shape endpoints.
+                </p>
+              </div>
+              <ApiExplorer />
+            </div>
+          </section>
+
+          {/* Contact */}
           <section id="contact" className="max-w-2xl mx-auto space-y-6 text-center font-sans">
             <div className="space-y-2">
-              <h3 className="text-2xl font-bold text-pl-purple font-sans">Initialize System Query</h3>
+              <h3 className="text-2xl font-bold text-pl-purple font-sans">Get in touch</h3>
               <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed font-medium">
-                Connect directly with Omer. Submitting this form simulates a high-priority 
-                BullMQ queue ingestion that routes notifications instantly.
+                Hiring, or have a project in mind? Send a message and I&apos;ll reply by email.
               </p>
             </div>
 
             <div className="bg-white border border-gray-200 pl-card-shadow rounded-lg p-5 sm:p-6 text-left shadow-xl space-y-6">
-              <div className="bg-slate-50 px-3 sm:px-4 py-2 border border-gray-200 rounded flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono gap-1.5 text-slate-600 font-bold">
-                <span>Endpoint:</span>
-                <span className="text-pl-purple truncate">POST https://omerhabib62.io/api/contact</span>
-              </div>
-              
-              {/* Linked Contact Form redirect fallback to email */}
-              <form 
-                action="https://formspree.io/f/xgegkeqo" // User can configure this, default structure is direct redirect form
+              <form
+                action="https://formspree.io/f/xgegkeqo"
                 method="POST"
                 className="space-y-4"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <label className="text-[10px] font-mono text-slate-500 font-bold block">SENDER_NAME</label>
-                    <input 
-                      type="text" 
+                    <label className="text-[10px] font-mono text-slate-500 font-bold block">Name</label>
+                    <input
+                      type="text"
                       name="name"
                       required
                       placeholder="e.g. John Doe"
@@ -363,9 +381,9 @@ export default function Home() {
                     />
                   </div>
                   <div className="space-y-1">
-                    <label className="text-[10px] font-mono text-slate-500 font-bold block">SENDER_EMAIL</label>
-                    <input 
-                      type="email" 
+                    <label className="text-[10px] font-mono text-slate-500 font-bold block">Email</label>
+                    <input
+                      type="email"
                       name="email"
                       required
                       placeholder="e.g. contact@company.com"
@@ -375,21 +393,21 @@ export default function Home() {
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[10px] font-mono text-slate-500 font-bold block">QUERY_PAYLOAD_MESSAGE</label>
-                  <textarea 
+                  <label className="text-[10px] font-mono text-slate-500 font-bold block">Message</label>
+                  <textarea
                     name="message"
                     required
                     rows={4}
-                    placeholder="Provide a project overview or senior role details..."
+                    placeholder="Tell me about the role or project..."
                     className="w-full bg-slate-50 border border-gray-200 rounded-md px-3 py-2 text-xs text-slate-900 font-mono outline-none focus:border-pl-purple focus:bg-white resize-none"
                   />
                 </div>
 
-                <button 
+                <button
                   type="submit"
                   className="w-full px-4 py-3 bg-pl-purple hover:bg-slate-800 text-white font-bold rounded font-mono text-xs cursor-pointer flex items-center justify-center gap-1.5 shadow-md"
                 >
-                  <Send className="w-3.5 h-3.5 fill-white" /> DISPATCH_COMMUNICATION_INGEST()
+                  <Send className="w-3.5 h-3.5 fill-white" /> Send message
                 </button>
               </form>
             </div>

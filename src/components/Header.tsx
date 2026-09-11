@@ -16,11 +16,10 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { name: "Terminal", href: "#console" },
-    { name: "Architecture", href: "#architecture" },
-    { name: "API Explorer", href: "#api-explorer" },
+    { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
-    { name: "Experience", href: "#experience" }
+    { name: "Skills", href: "#skills" },
+    { name: "Playground", href: "#playground" }
   ];
 
   return (
@@ -36,7 +35,7 @@ export default function Header() {
         >
           <Cpu className="w-5 h-5 text-pl-purple group-hover:rotate-12 transition-transform" />
           <span className="font-bold text-sm text-pl-purple tracking-tight">
-            omerhabib<span className="text-pl-magenta">.io</span>
+            Omer Bin <span className="text-pl-magenta">Habib</span>
           </span>
         </a>
 
@@ -55,7 +54,7 @@ export default function Header() {
             href="#contact"
             className="px-3.5 py-1.5 bg-pl-purple hover:bg-slate-800 text-white rounded transition-all text-xs font-bold shadow-sm flex items-center gap-1.5"
           >
-            <Mail className="w-3.5 h-3.5" /> QUERY_API()
+            <Mail className="w-3.5 h-3.5" /> Contact
           </a>
         </nav>
 
@@ -86,7 +85,7 @@ export default function Header() {
             onClick={() => setIsMobileMenuOpen(false)}
             className="px-4 py-2.5 bg-pl-purple text-white rounded text-center text-xs font-bold font-mono transition-all flex items-center justify-center gap-1.5"
           >
-            <Mail className="w-4 h-4" /> QUERY_API()
+            <Mail className="w-4 h-4" /> Contact
           </a>
         </div>
       )}

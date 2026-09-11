@@ -18,7 +18,7 @@ export default function ApiExplorer() {
   const [inputs, setInputs] = useState<Record<string, string>>({
     name: "John Doe",
     email: "john@example.com",
-    message: "Hi Omer, let's build an AI pipeline."
+    message: "Hi Omer, let's talk about a backend role."
   });
   const [loadingIndex, setLoadingIndex] = useState<number | null>(null);
   const [results, setResults] = useState<Record<number, { status: number; time: string; body: string; headers: Record<string, string> }>>({});
@@ -28,10 +28,10 @@ export default function ApiExplorer() {
       method: "GET",
       path: "/api/profile",
       summary: "Fetch overall developer credentials",
-      description: "Returns professional summary, core tech stacks, and active growth parameters.",
+      description: "Returns professional summary and core tech stacks.",
       responseBody: {
         engineer: "Omer Bin Habib",
-        title: "Backend Engineer — Node.js, TypeScript, PostgreSQL",
+        title: "Software Engineer, backend-focused — Node.js, TypeScript, PostgreSQL",
         experience: "6+ Years",
         academics: {
           degree: "MS in Business Analytics (MSBA)",
@@ -41,7 +41,7 @@ export default function ApiExplorer() {
         focus_areas: [
           "Scalable NestJS Backends",
           "AI/LLM pipelines (Claude/OpenAI)",
-          "High-throughput queues (BullMQ/Redis)",
+          "Queue-based processing (BullMQ/Redis)",
           "Hybrid database lookups (pgvector/Postgres)"
         ],
         contact: {
@@ -54,8 +54,8 @@ export default function ApiExplorer() {
     {
       method: "GET",
       path: "/api/projects",
-      summary: "Query high-impact deployments database",
-      description: "Queries the complete portfolio database of production-grade B2B SaaS backends.",
+      summary: "List featured projects",
+      description: "Returns featured backend projects.",
       parameters: [
         { name: "featured", type: "boolean", required: false, description: "Filter only featured projects", default: "true" }
       ],
@@ -67,7 +67,7 @@ export default function ApiExplorer() {
             segment: "B2B Social & Community Monetization",
             stack: ["NestJS", "PostgreSQL", "Upstash Redis", "Stripe Connect", "BullMQ"],
             implementation: "Replaced scan-based search with pgvector hybrid search (semantic + keyword), cutting database load substantially",
-            modules: 13,
+            modules: 16,
             migrations: 73
           },
           {
@@ -75,13 +75,13 @@ export default function ApiExplorer() {
             segment: "AI Mental Health Platform",
             stack: ["NestJS", "Claude API", "NeverBounce", "Postmark", "Jest"],
             implementation: "Clinical risk alert pipeline with EWMA baseline comparison and tiered alert classification",
-            tests_coverage: "357 automated Jest tests"
+            automated_tests: 357
           },
           {
             name: "Audit-this-engine",
             segment: "Agency Code-Intelligence Engine",
             stack: ["NestJS", "TypeORM", "BullMQ", "Prompt-Caching", "Claude API"],
-            performance_gain: "7 static analysis tool runners fanned out in parallel queues"
+            implementation: "Static analysis scanners fanned out in parallel BullMQ queues"
           }
         ]
       }
@@ -90,7 +90,7 @@ export default function ApiExplorer() {
       method: "POST",
       path: "/api/contact",
       summary: "Dispatch a priority communication",
-      description: "Validates email structures and queues contact signals directly in Omer's backend system.",
+      description: "Mock endpoint showing request validation and a queued-job response shape.",
       requestBody: {
         name: "string",
         email: "string",
@@ -99,8 +99,7 @@ export default function ApiExplorer() {
       responseBody: {
         success: true,
         message: "Signal received and queued successfully.",
-        job_id: "bullmq_job_912f20ba8bc1",
-        estimated_response_hours: 12
+        job_id: "bullmq_job_912f20ba8bc1"
       }
     }
   ];

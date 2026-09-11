@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Omer Bin Habib | Backend Engineer — Node.js, TypeScript, PostgreSQL",
-  description: "Backend engineer with six years' experience building REST APIs in Node.js and NestJS on PostgreSQL — idempotent writes, retries, queue-based processing and scheduled jobs. Also Laravel, Docker, AWS and LLM integration. Karachi, available for remote work.",
+  title: "Omer Bin Habib | Software Engineer — Node.js, NestJS/NextJS, TypeScript, PostgreSQL",
+  description: "Backend engineer with six years' experience building REST APIs — idempotent writes, retries, queue-based processing and scheduled jobs. Also Laravel, Docker, AWS and LLM integration. Karachi, available for remote work.",
 };
 
 export default function RootLayout({
