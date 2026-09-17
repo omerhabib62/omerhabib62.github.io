@@ -63,6 +63,7 @@ export default function Home() {
       metrics: "Natural-Language Parser",
       githubUrl: "https://github.com/omerhabib62/dost-fitness",
       liveUrl: "https://dost-fitness.vercel.app/",
+      docsUrl: "https://gist.github.com/omerhabib62/e1be2f3b324144731b7afafd03799174",
       highlights: [
         "Plain-language logging converted into structured nutrition and activity records.",
         "Supabase authentication with row-level security on PostgreSQL.",

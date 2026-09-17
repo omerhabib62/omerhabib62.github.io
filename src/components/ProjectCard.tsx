@@ -1,4 +1,4 @@
-import { ExternalLink, Cpu, CheckCircle } from "lucide-react";
+import { ExternalLink, Cpu, CheckCircle, FileText } from "lucide-react";
 
 interface ProjectCardProps {
   title: string;
@@ -7,6 +7,7 @@ interface ProjectCardProps {
   metrics: string;
   githubUrl?: string;
   liveUrl?: string;
+  docsUrl?: string;
   highlights?: string[];
 }
 
@@ -17,6 +18,7 @@ export default function ProjectCard({
   metrics,
   githubUrl,
   liveUrl,
+  docsUrl,
   highlights
 }: ProjectCardProps) {
   return (
@@ -90,6 +92,16 @@ export default function ProjectCard({
               className="flex items-center gap-1 text-pl-purple hover:text-pl-magenta font-bold transition-colors"
             >
               <ExternalLink className="w-3.5 h-3.5" /> LIVE DEMO
+            </a>
+          )}
+          {docsUrl && (
+            <a
+              href={docsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-slate-500 hover:text-pl-purple transition-colors"
+            >
+              <FileText className="w-3.5 h-3.5" /> ARCHITECTURE DOC
             </a>
           )}
         </div>
