@@ -83,13 +83,13 @@ export default function Home() {
       ]
     },
     {
-      title: "Apna Khata — Produce Marketplace Backend",
-      description: "Laravel backend for an online B2B fruit and vegetable marketplace, built at Blocship.",
+      title: "Apna Khata — Produce Market Transactions",
+      description: "Laravel app for Pakistan's produce markets, where farmers sold fruit and vegetables to market traders at the rates they were offered. Built at Blocship.",
       tech: ["Laravel", "PHP", "MySQL", "AWS S3"],
-      metrics: "Laravel Marketplace",
+      metrics: "Transaction Tracking",
       highlights: [
-        "Marketplace backend for listing and trading fresh produce.",
-        "One of six production backends delivered at Blocship."
+        "I built the transaction tracking between farmers and traders.",
+        "One of six products I worked on with the Blocship backend team."
       ]
     },
     {
@@ -172,10 +172,17 @@ export default function Home() {
               </a>
               <a
                 href="/resume.pdf"
-                download="Omer_Bin_Habib_Resume.pdf"
+                download="Omer_Bin_Habib_Backend_Engineer.pdf"
                 className="px-6 py-3 bg-white border border-gray-200 text-slate-700 font-bold rounded font-mono text-xs cursor-pointer hover:border-pl-purple hover:text-pl-purple hover:shadow-sm active:scale-95 transition-all flex items-center gap-1.5"
               >
-                <Download className="w-4 h-4 text-slate-500" /> Download CV
+                <Download className="w-4 h-4 text-slate-500" /> CV — Backend &amp; AI
+              </a>
+              <a
+                href="/resume-analytics.pdf"
+                download="Omer_Bin_Habib_Business_Analytics.pdf"
+                className="px-6 py-3 bg-white border border-gray-200 text-slate-700 font-bold rounded font-mono text-xs cursor-pointer hover:border-pl-purple hover:text-pl-purple hover:shadow-sm active:scale-95 transition-all flex items-center gap-1.5"
+              >
+                <Download className="w-4 h-4 text-slate-500" /> CV — Analytics
               </a>
             </div>
 
