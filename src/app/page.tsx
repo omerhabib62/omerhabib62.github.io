@@ -175,7 +175,7 @@ export default function Home() {
                 download="Omer_Bin_Habib_Backend_Engineer.pdf"
                 className="px-6 py-3 bg-white border border-gray-200 text-slate-700 font-bold rounded font-mono text-xs cursor-pointer hover:border-pl-purple hover:text-pl-purple hover:shadow-sm active:scale-95 transition-all flex items-center gap-1.5"
               >
-                <Download className="w-4 h-4 text-slate-500" /> CV — Backend &amp; AI
+                <Download className="w-4 h-4 text-slate-500" /> CV — Backend
               </a>
               <a
                 href="/resume-analytics.pdf"
