@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 // Paste your Cloudflare Web Analytics token here (the "token" value inside
 // data-cf-beacon in the snippet from the Cloudflare dashboard).
 // Leave it empty and no tracking script is added.
-const CLOUDFLARE_ANALYTICS_TOKEN = "";
+const CLOUDFLARE_ANALYTICS_TOKEN = "6ad2c6697f494139a1a17bd18b7e1b69";
 
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
