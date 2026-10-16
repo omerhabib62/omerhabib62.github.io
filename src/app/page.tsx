@@ -180,6 +180,9 @@ export default function Page() {
           ))}
         </div>
         <p>© {new Date().getFullYear()} {DATA.name}</p>
+        <p>
+          This site counts visits with GoatCounter: no cookies, no personal data, no tracking across sites.
+        </p>
       </footer>
     </main>
   );

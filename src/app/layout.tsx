@@ -5,6 +5,7 @@ import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -19,6 +20,10 @@ const geistMono = Geist_Mono({
   weight: ["400", "500", "600", "700"],
   variable: "--font-mono",
 });
+
+// Paste your GoatCounter site code here (the part before ".goatcounter.com").
+// Leave it empty and no tracking script is added.
+const GOATCOUNTER_CODE = "";
 
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
@@ -68,6 +73,13 @@ export default function RootLayout({
             <Navbar />
           </TooltipProvider>
         </ThemeProvider>
+        {GOATCOUNTER_CODE && (
+          <Script
+            src="https://gc.zgo.at/count.js"
+            data-goatcounter={`https://${GOATCOUNTER_CODE}.goatcounter.com/count`}
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   );
