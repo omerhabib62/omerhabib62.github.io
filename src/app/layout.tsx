@@ -5,6 +5,7 @@ import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -19,6 +20,11 @@ const geistMono = Geist_Mono({
   weight: ["400", "500", "600", "700"],
   variable: "--font-mono",
 });
+
+// Paste your Cloudflare Web Analytics token here (the "token" value inside
+// data-cf-beacon in the snippet from the Cloudflare dashboard).
+// Leave it empty and no tracking script is added.
+const CLOUDFLARE_ANALYTICS_TOKEN = "6ad2c6697f494139a1a17bd18b7e1b69";
 
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
@@ -68,6 +74,13 @@ export default function RootLayout({
             <Navbar />
           </TooltipProvider>
         </ThemeProvider>
+        {CLOUDFLARE_ANALYTICS_TOKEN && (
+          <Script
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: CLOUDFLARE_ANALYTICS_TOKEN })}
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   );

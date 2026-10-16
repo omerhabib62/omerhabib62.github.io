@@ -201,6 +201,9 @@ export default function Page() {
           ))}
         </div>
         <p>© {new Date().getFullYear()} {DATA.name}</p>
+        <p>
+          This site counts visits with Cloudflare Web Analytics: no cookies and no tracking across sites.
+        </p>
       </footer>
     </main>
   );
