@@ -9,24 +9,20 @@ interface HistoryItem {
 }
 
 export default function DevConsole() {
-  const [history, setHistory] = useState<HistoryItem[]>([]);
+  const welcomeMessage = (
+    <div className="space-y-1">
+      <p className="text-foreground font-bold">Omer Bin Habib - Developer Console v1.0.0</p>
+      <p className="text-muted-foreground text-sm">Type <span className="text-emerald-600 font-semibold">help</span> to view available system commands or <span className="text-foreground font-semibold">curl -X GET /api/stats</span> to query developer metrics.</p>
+      <div className="border-t border-border my-2" />
+    </div>
+  );
+
+  const [history, setHistory] = useState<HistoryItem[]>(() => [{ command: "system_init", output: welcomeMessage }]);
   const [input, setInput] = useState("");
   const [isMinimized, setIsMinimized] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const welcomeMessage = (
-    <div className="space-y-1">
-      <p className="text-pl-purple font-bold">Omer Bin Habib - Developer Console v1.0.0</p>
-      <p className="text-slate-600 text-sm">Type <span className="text-emerald-600 font-semibold">help</span> to view available system commands or <span className="text-pl-purple font-semibold">curl -X GET /api/stats</span> to query developer metrics.</p>
-      <div className="border-t border-gray-200 my-2" />
-    </div>
-  );
-
-  useEffect(() => {
-    setHistory([{ command: "system_init", output: welcomeMessage }]);
-  }, []);
 
   useEffect(() => {
     if (scrollContainerRef.current) {
@@ -46,15 +42,15 @@ export default function DevConsole() {
 
     if (trimmedCmd === "help") {
       response = (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-slate-700 py-1">
-          <div><span className="text-pl-purple font-bold">help</span> - Display list of console commands</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-muted-foreground py-1">
+          <div><span className="text-foreground font-bold">help</span> - Display list of console commands</div>
           <div><span className="text-emerald-600 font-bold">skills</span> - Print toolkit & stacks</div>
-          <div><span className="text-pl-purple font-bold">projects</span> - List key projects</div>
+          <div><span className="text-foreground font-bold">projects</span> - List key projects</div>
           <div><span className="text-emerald-600 font-bold">experience</span> - Fetch engineering career history</div>
           <div><span className="text-indigo-600 font-bold">education</span> - Query degrees & certifications</div>
           <div><span className="text-indigo-600 font-bold">curl -X GET /api/stats</span> - Print developer profile as JSON</div>
           <div><span className="text-red-500 font-bold">sudo rm -rf /</span> - Attempt high-level core wipe</div>
-          <div><span className="text-slate-500 font-bold">clear</span> - Purge terminal scrollback history</div>
+          <div><span className="text-muted-foreground font-bold">clear</span> - Purge terminal scrollback history</div>
         </div>
       );
     } else if (trimmedCmd === "clear") {
@@ -63,106 +59,106 @@ export default function DevConsole() {
       return;
     } else if (trimmedCmd === "skills") {
       response = (
-        <div className="space-y-2 text-sm text-slate-800 font-mono">
+        <div className="space-y-2 text-sm text-foreground font-mono">
           <p className="text-emerald-600 font-bold font-sans"># Technical Stacks Matrix</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border border-gray-200 p-3 rounded bg-white shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border border-border p-3 rounded bg-card shadow-sm">
             <div>
-              <p className="text-pl-purple font-bold">// Core Backend</p>
-              <p className="text-xs text-slate-600">NestJS (Clean Architecture), Node.js, TypeScript, Python, Laravel, ExpressJS</p>
+              <p className="text-foreground font-bold">{"// Core Backend"}</p>
+              <p className="text-xs text-muted-foreground">NestJS, Node.js, TypeScript, Express, PHP (Laravel, Lumen), Python (FastAPI)</p>
             </div>
             <div>
-              <p className="text-emerald-600 font-bold">// Data & Pipelines</p>
-              <p className="text-xs text-slate-600">PostgreSQL (daily), pgvector (hybrid search), Redis (Upstash, BullMQ job queues), TypeORM, MySQL, SQLite</p>
+              <p className="text-emerald-600 font-bold">{"// Data & Queues"}</p>
+              <p className="text-xs text-muted-foreground">PostgreSQL, MySQL, Redis, BullMQ, TypeORM, SQLite, pgvector</p>
             </div>
             <div>
-              <p className="text-indigo-600 font-bold">// AI & LLM Systems</p>
-              <p className="text-xs text-slate-600">Claude/OpenAI APIs, LangGraph, pgvector hybrid retrieval, Langfuse observability</p>
+              <p className="text-indigo-600 font-bold">{"// AI & LLM"}</p>
+              <p className="text-xs text-muted-foreground">Claude, OpenAI and Gemini APIs, LangGraph, Langfuse, Zod-validated output</p>
             </div>
             <div>
-              <p className="text-amber-600 font-bold">// DevOps & Cloud</p>
-              <p className="text-xs text-slate-600">AWS (Lambda, EC2, RDS, S3), Docker, GitHub Actions CI/CD, Sentry</p>
+              <p className="text-amber-600 font-bold">{"// DevOps & Testing"}</p>
+              <p className="text-xs text-muted-foreground">Docker, nginx, GitHub Actions, Sentry, Pino, Jest, Playwright, AWS (Lambda, RDS, S3, EC2)</p>
             </div>
           </div>
         </div>
       );
     } else if (trimmedCmd === "projects") {
       response = (
-        <div className="space-y-3 text-sm text-slate-700">
-          <p className="text-pl-purple font-bold font-sans text-base"># Key Projects</p>
+        <div className="space-y-3 text-sm text-muted-foreground">
+          <p className="text-foreground font-bold font-sans text-base"># Key Projects</p>
           <div className="space-y-3">
-            <div className="border-l-2 border-pl-purple pl-3">
-              <p className="font-bold text-slate-900">1. Groops — Community Monetization Backend</p>
-              <p className="text-xs text-slate-500">Stripe Connect financial ledgers, BullMQ/Redis webhook queues, pgvector hybrid search in place of scan-based text queries.</p>
+            <div className="border-l-2 border-primary pl-3">
+              <p className="font-bold text-foreground">1. Groops (Blocship)</p>
+              <p className="text-xs text-muted-foreground">NestJS on Clean Architecture: 16 modules, 73 migrations, 81 entities, 472 test suites. Backend moved from Lumen to Laravel to NestJS.</p>
             </div>
             <div className="border-l-2 border-emerald-500 pl-3">
-              <p className="font-bold text-slate-900">2. Spot — AI Mental Health Platform</p>
-              <p className="text-xs text-slate-500">357 automated tests, EWMA risk scoring pipeline, tiered LLM model routing, multi-header CSV parser.</p>
+              <p className="font-bold text-foreground">2. Spot (independent)</p>
+              <p className="text-xs text-muted-foreground">UK workplace wellbeing SaaS: Stripe Connect tiered billing, GDPR handling, 357 tests, 18 migrations. Deployed on Render, never launched to users.</p>
             </div>
             <div className="border-l-2 border-indigo-500 pl-3">
-              <p className="font-bold text-slate-900">3. Audit-this-engine — Agency Code Intelligence Platform</p>
-              <p className="text-xs text-slate-500">Parallel static-analysis scanners, BullMQ fan-out/fan-in, prompt caching.</p>
+              <p className="font-bold text-foreground">3. MaidMe (Blocship)</p>
+              <p className="text-xs text-muted-foreground">NestJS socket server added beside a live Laravel backend for real-time booking and support chat.</p>
             </div>
           </div>
         </div>
       );
     } else if (trimmedCmd === "experience") {
       response = (
-        <div className="space-y-2 text-sm text-slate-700 font-mono">
+        <div className="space-y-2 text-sm text-muted-foreground font-mono">
           <p className="text-indigo-600 font-bold font-sans"># Career History</p>
           <div className="space-y-2">
             <div>
-              <p className="text-slate-900 font-bold">[Jan 2026 - Present] Software Engineer — Independent Consultant</p>
-              <p className="text-xs text-slate-500">Designing architecture and AI/data pipelines for UK-based SaaS startups (Spot, Groops, Audit-this).</p>
+              <p className="text-foreground font-bold">[Jan 2026 - Present] Independent Consultant</p>
+              <p className="text-xs text-muted-foreground">Backend engineer for UK SaaS clients (Spot, AgencyView, spot-nlp-sidecar), plus client work in Denmark and Pakistan.</p>
             </div>
             <div>
-              <p className="text-slate-900 font-bold">[May 2023 - Dec 2025] Software Engineer | Blocship</p>
-              <p className="text-xs text-slate-500">Backend across six products in Express, NestJS and Laravel; a NestJS socket server for MaidMe's real-time booking and chat.</p>
+              <p className="text-foreground font-bold">[May 2023 - Dec 2025] Software Engineer | Blocship</p>
+              <p className="text-xs text-muted-foreground">Backend across nine products in a team of six Flutter and frontend developers plus one QA; technically the only backend engineer.</p>
             </div>
             <div>
-              <p className="text-slate-900 font-bold">[Apr 2021 - May 2023] Software Engineer | Sybrid (Pvt) Ltd</p>
-              <p className="text-xs text-slate-500">FiTE, a bilingual Laravel recruitment platform with four user roles; MySQL stored procedures for profile scoring.</p>
+              <p className="text-foreground font-bold">[Apr 2021 - May 2023] Software Engineer | Sybrid (Pvt) Ltd</p>
+              <p className="text-xs text-muted-foreground">FiTE, a bilingual Laravel hiring portal with four user groups; MySQL stored procedures for profile scoring.</p>
+            </div>
+            <div>
+              <p className="text-foreground font-bold">[Sep 2020 - Apr 2021] Associate Developer | TAFSOL Technologies</p>
+              <p className="text-xs text-muted-foreground">Athletes Guide e-store and platform; timesheet management app.</p>
             </div>
           </div>
         </div>
       );
     } else if (trimmedCmd === "education") {
       response = (
-        <div className="space-y-2 text-sm text-slate-700">
-          <p className="text-pl-purple font-bold"># Education Registry</p>
-          <p className="text-slate-900 font-semibold">MS in Business Analytics (MSBA) <span className="text-slate-500 font-normal">| KSBL (Expected: Dec 2026)</span></p>
-          <p className="text-xs text-emerald-600 pl-4">- Focusing on financial modeling, willingness-to-pay frameworks, and decision-science pipelines.</p>
-          <p className="text-slate-900 font-semibold">BS in Computer Science (BSCS) <span className="text-slate-500 font-normal">| SZABIST (Graduated: 2020)</span></p>
-          
-          <p className="text-pl-purple font-bold mt-2"># Selected Certifications</p>
-          <div className="text-xs text-slate-500 space-y-1 pl-4 font-mono">
-            <div>• IBM Cloud Computing (2025) - <a href="https://www.coursera.org/account/accomplishments/verify/EL9NUHQT2FZF" target="_blank" rel="noopener noreferrer" className="text-pl-purple font-semibold hover:underline">Verify</a></div>
-            <div>• IBM Software Engineering (2025) - <a href="https://www.coursera.org/account/accomplishments/verify/JHB51DAZGCT6" target="_blank" rel="noopener noreferrer" className="text-pl-purple font-semibold hover:underline">Verify</a></div>
-            <div>• NestJS / Laravel APIs & PHP Secure Coding - LinkedIn</div>
+        <div className="space-y-2 text-sm text-muted-foreground">
+          <p className="text-foreground font-bold"># Education</p>
+          <p className="text-foreground font-semibold">MS in Business Analytics (MSBA) <span className="text-muted-foreground font-normal">| KSBL (final semester, graduating Dec 2026)</span></p>
+          <p className="text-xs text-muted-foreground pl-4">- CGPA 3.12 on a 4.0 scale after the 2nd semester.</p>
+          <p className="text-foreground font-semibold">BSc Computer Science <span className="text-muted-foreground font-normal">| SZABIST, 2016-2020</span></p>
+
+          <p className="text-foreground font-bold mt-2"># Certifications</p>
+          <div className="text-xs text-muted-foreground space-y-1 pl-4 font-mono">
+            <div>• Microsoft Power BI</div>
+            <div>• Generative AI with Large Language Models (DeepLearning.AI with AWS)</div>
+            <div>• Introduction to Cloud Computing (IBM, 2025)</div>
+            <div>• Git and GitHub Essentials (IBM, 2025)</div>
+            <div>• Building RESTful APIs in Laravel (LinkedIn Learning, 2022)</div>
           </div>
         </div>
       );
     } else if (trimmedCmd === "curl -x get /api/stats") {
       response = (
-        <pre className="text-slate-800 text-xs font-mono p-2.5 rounded bg-slate-100 overflow-x-auto border border-gray-200 pl-scrollbar">
+        <pre className="text-foreground text-xs font-mono p-2.5 rounded bg-muted overflow-x-auto border border-border pl-scrollbar">
 {`{
   "developer": "Omer Bin Habib",
-  "role": "Software Engineer, backend-focused (Node.js, TypeScript, PostgreSQL)",
-  "status": "active_consulting",
-  "metrics": {
-    "years_of_experience": 6.2,
-    "primary_stack": ["NestJS", "TypeScript", "Python", "PostgreSQL", "Redis"],
-    "performance_milestones": {
-      "spot_backend_test_count": 357,
-      "groops_search": "pgvector hybrid (semantic + keyword)",
-      "maidme_realtime": "NestJS socket server beside a live Laravel backend"
-    },
-    "academic_integration": {
-      "degree": "MSBA @ KSBL",
-      "specialization": "Decision-Science & Financial Sizing"
-    },
-    "security_alignment": "OWASP-compliant",
-    "availability": "Remote / UK & GCC timezone compatible"
-  }
+  "role": "Software Engineer, backend-focused (Node.js, TypeScript, NestJS, PostgreSQL)",
+  "years_of_experience": 6,
+  "status": "independent consultant, open to work",
+  "numbers": {
+    "spot_automated_tests": 357,
+    "groops_modules": 16,
+    "groops_migrations": 73,
+    "agencyview_report_types": 13
+  },
+  "education": "MSBA at KSBL, graduating Dec 2026",
+  "location": "Karachi, Pakistan (remote, or relocation after Dec 2026)"
 }`}
         </pre>
       );
@@ -171,9 +167,8 @@ export default function DevConsole() {
         <div className="space-y-2 text-sm text-red-600 font-mono font-bold animate-pulse">
           <p>⚠️ CRITICAL WARNING: CORE SYSTEM ACCESS DETECTED</p>
           <p>[!!!] ATTEMPTING SYSTEM DESTRUCTION: sudo rm -rf /</p>
-          <p className="pl-4 text-slate-800">Progress: [||||||||||||||||||||||||||||||] 100%</p>
           <p className="text-yellow-600">... Wait! Error intercept. Firewalls fully active.</p>
-          <p className="text-emerald-600">Nice try, operator! Access denied. Resume preserved safely on PostgreSQL cloud database.</p>
+          <p className="text-emerald-600">Nice try, operator! Access denied. Nothing was deleted.</p>
         </div>
       );
     } else if (trimmedCmd === "") {
@@ -181,7 +176,7 @@ export default function DevConsole() {
     } else {
       response = (
         <p className="text-red-500 text-sm">
-          Command not found: "{cmd}". Type <span className="text-emerald-600 font-semibold font-mono">help</span> to view all commands.
+          Command not found: &quot;{cmd}&quot;. Type <span className="text-emerald-600 font-semibold font-mono">help</span> to view all commands.
         </p>
       );
     }
@@ -200,9 +195,9 @@ export default function DevConsole() {
     return (
       <button 
         onClick={() => setIsMinimized(false)}
-        className="fixed bottom-4 right-4 z-50 flex items-center gap-2 bg-white border-2 border-pl-purple hover:bg-slate-50 px-4 py-2 rounded-md shadow-lg text-pl-purple cursor-pointer transition-all duration-300 font-mono text-xs font-bold"
+        className="fixed bottom-4 right-4 z-50 flex items-center gap-2 bg-card border-2 border-primary hover:bg-muted px-4 py-2 rounded-md shadow-lg text-foreground cursor-pointer transition-all duration-300 font-mono text-xs font-bold"
       >
-        <Terminal className="w-4 h-4 animate-pulse text-pl-purple" />
+        <Terminal className="w-4 h-4 animate-pulse text-foreground" />
         Restore Developer Console
       </button>
     );
@@ -211,14 +206,14 @@ export default function DevConsole() {
   return (
     <div 
       onClick={handleTerminalClick}
-      className={`bg-white rounded-lg overflow-hidden border border-gray-200 transition-all duration-300 shadow-xl flex flex-col font-mono text-left 
+      className={`bg-card rounded-lg overflow-hidden border border-border transition-all duration-300 shadow-xl flex flex-col font-mono text-left 
         ${isMaximized ? "fixed inset-4 z-50" : "h-[450px] w-full max-w-4xl mx-auto"}`}
     >
       {/* Terminal Title Bar */}
-      <div className="bg-pl-purple px-4 py-3 flex items-center justify-between border-b border-pl-purple select-none text-white">
+      <div className="bg-primary px-4 py-3 flex items-center justify-between border-b border-primary select-none text-primary-foreground">
         <div className="flex items-center gap-2">
-          <Terminal className="w-4 h-4 text-pl-lime" />
-          <span className="text-xs font-bold text-slate-100">terminal@omer-habib-backend:~</span>
+          <Terminal className="w-4 h-4 text-emerald-500" />
+          <span className="text-xs font-bold text-primary-foreground">omer@portfolio:~</span>
         </div>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5">
@@ -250,7 +245,7 @@ export default function DevConsole() {
       {/* Terminal Output Panel */}
       <div 
         ref={scrollContainerRef}
-        className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 pl-scrollbar bg-slate-50 relative text-slate-800"
+        className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 pl-scrollbar bg-muted relative text-foreground"
       >
         {/* Subtle Scanline Effect */}
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_98%,rgba(0,0,0,0.03)_98%)] bg-[length:100%_12px] pointer-events-none" />
@@ -259,9 +254,9 @@ export default function DevConsole() {
           <div key={index} className="space-y-1">
             {item.command !== "system_init" && item.command !== "system_restart" && (
               <div className="flex items-center gap-2 text-xs">
-                <span className="text-pl-purple font-bold">visitor@terminal</span>
-                <span className="text-slate-400">❯</span>
-                <span className="text-slate-900 font-bold">{item.command}</span>
+                <span className="text-foreground font-bold">visitor@terminal</span>
+                <span className="text-muted-foreground">❯</span>
+                <span className="text-foreground font-bold">{item.command}</span>
               </div>
             )}
             <div className="pl-4">{item.output}</div>
@@ -270,10 +265,10 @@ export default function DevConsole() {
       </div>
 
       {/* Terminal Input Line */}
-      <div className="bg-slate-100 p-3 border-t border-gray-200 flex items-center gap-2 text-xs sm:text-sm">
-        <span className="text-pl-purple font-bold hidden sm:inline">omer@backend-terminal</span>
-        <span className="text-pl-purple font-bold sm:hidden">omer</span>
-        <span className="text-pl-magenta font-bold">❯</span>
+      <div className="bg-muted p-3 border-t border-border flex items-center gap-2 text-xs sm:text-sm">
+        <span className="text-foreground font-bold hidden sm:inline">omer@backend-terminal</span>
+        <span className="text-foreground font-bold sm:hidden">omer</span>
+        <span className="text-muted-foreground font-bold">❯</span>
         <input
           ref={inputRef}
           type="text"
@@ -281,7 +276,7 @@ export default function DevConsole() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder='Type a command (e.g., "help", "skills", "curl -X GET /api/stats")...'
-          className="flex-1 bg-transparent border-none outline-none text-slate-900 font-mono placeholder-slate-400 text-sm focus:ring-0 p-0"
+          className="flex-1 bg-transparent border-none outline-none text-foreground font-mono placeholder-muted-foreground text-sm focus:ring-0 p-0"
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="none"
@@ -289,10 +284,10 @@ export default function DevConsole() {
         />
         <button 
           onClick={() => handleCommand(input)}
-          className="text-pl-purple hover:text-pl-magenta cursor-pointer transition-colors p-1"
+          className="text-foreground hover:text-foreground cursor-pointer transition-colors p-1"
           title="Run Command"
         >
-          <Play className="w-4 h-4 fill-pl-purple/10" />
+          <Play className="w-4 h-4 fill-foreground/10" />
         </button>
       </div>
     </div>
