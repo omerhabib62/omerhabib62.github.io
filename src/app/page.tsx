@@ -1,6 +1,6 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import ContactSection from "@/components/section/contact-section";
@@ -39,6 +39,7 @@ export default function Page() {
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
               <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
+                <AvatarImage src="/me.jpg" alt={DATA.name} className="object-cover" />
                 <AvatarFallback className="text-2xl font-semibold">{DATA.initials}</AvatarFallback>
               </Avatar>
             </BlurFade>
