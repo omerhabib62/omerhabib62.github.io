@@ -1,6 +1,6 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import ContactSection from "@/components/section/contact-section";
@@ -39,6 +39,7 @@ export default function Page() {
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
               <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
+                <AvatarImage src="/me.jpg" alt={DATA.name} className="object-cover" />
                 <AvatarFallback className="text-2xl font-semibold">{DATA.initials}</AvatarFallback>
               </Avatar>
             </BlurFade>
@@ -163,6 +164,23 @@ export default function Page() {
           <ContactSection />
         </BlurFade>
       </section>
+
+      <footer className="flex flex-col items-center gap-2 text-xs text-muted-foreground">
+        <div className="flex items-center gap-4">
+          {Object.values(DATA.contact.social).map((social) => (
+            <a
+              key={social.name}
+              href={social.url}
+              target={social.url.startsWith("http") ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
+              {social.name}
+            </a>
+          ))}
+        </div>
+        <p>© {new Date().getFullYear()} {DATA.name}</p>
+      </footer>
     </main>
   );
 }
