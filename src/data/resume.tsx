@@ -34,6 +34,7 @@ export const DATA = {
     social: {
       GitHub: { name: "GitHub", url: "https://github.com/omerhabib62", icon: Icons.github, navbar: true },
       LinkedIn: { name: "LinkedIn", url: "https://www.linkedin.com/in/omer-bin-habib/", icon: Icons.linkedin, navbar: true },
+      Medium: { name: "Medium", url: "https://medium.com/@omer.habib", icon: Icons.medium, navbar: true },
       Email: { name: "Email", url: "mailto:omer.habib62@gmail.com", icon: Icons.email, navbar: true },
     },
   },

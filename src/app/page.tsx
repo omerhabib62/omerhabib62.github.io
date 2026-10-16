@@ -164,6 +164,23 @@ export default function Page() {
           <ContactSection />
         </BlurFade>
       </section>
+
+      <footer className="flex flex-col items-center gap-2 text-xs text-muted-foreground">
+        <div className="flex items-center gap-4">
+          {Object.values(DATA.contact.social).map((social) => (
+            <a
+              key={social.name}
+              href={social.url}
+              target={social.url.startsWith("http") ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
+              {social.name}
+            </a>
+          ))}
+        </div>
+        <p>© {new Date().getFullYear()} {DATA.name}</p>
+      </footer>
     </main>
   );
 }
