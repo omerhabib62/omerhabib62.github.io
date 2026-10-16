@@ -64,6 +64,16 @@ export default function Page() {
               ))}
             </div>
           </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 5}>
+            <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+              <span>Work with me:</span>
+              {DATA.freelance.map((f) => (
+                <a key={f.href} href={f.href} target="_blank" rel="noopener noreferrer">
+                  <Badge variant="secondary" className="cursor-pointer h-8 px-4 text-xs">{f.label}</Badge>
+                </a>
+              ))}
+            </div>
+          </BlurFade>
         </div>
       </section>
 
@@ -176,6 +186,17 @@ export default function Page() {
               className="hover:text-foreground transition-colors"
             >
               {social.name}
+            </a>
+          ))}
+          {DATA.freelance.map((f) => (
+            <a
+              key={f.href}
+              href={f.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
+              {f.label}
             </a>
           ))}
         </div>

@@ -16,6 +16,10 @@ export const DATA = {
     { label: "CV: AI Development", href: "/resume-ai.pdf", file: "Omer_Bin_Habib_AI_Developer.pdf" },
     { label: "CV: Analytics", href: "/resume-analytics.pdf", file: "Omer_Bin_Habib_Business_Analytics.pdf" },
   ],
+  freelance: [
+    { label: "Fiverr", href: "https://www.fiverr.com/umerhabib509" },
+    { label: "Upwork", href: "https://www.upwork.com/freelancers/~01d8abef4085d4f895" },
+  ],
   skills: [
     { group: "Backend", items: ["Node.js", "TypeScript", "JavaScript", "NestJS", "Express", "PHP (Laravel, Lumen)", "Python (FastAPI)", "REST / OpenAPI", "JWT", "WebSockets / Socket.io"] },
     { group: "Data", items: ["PostgreSQL", "MySQL", "Redis", "BullMQ", "TypeORM", "SQLite", "pgvector", "Stored procedures", "Migrations"] },
