@@ -9,8 +9,8 @@ interface ApiEndpoint {
   description: string;
   summary: string;
   parameters?: { name: string; type: string; required: boolean; description: string; default?: string }[];
-  requestBody?: Record<string, any>;
-  responseBody: Record<string, any>;
+  requestBody?: Record<string, unknown>;
+  responseBody: Record<string, unknown>;
 }
 
 export default function ApiExplorer() {
@@ -31,18 +31,17 @@ export default function ApiExplorer() {
       description: "Returns professional summary and core tech stacks.",
       responseBody: {
         engineer: "Omer Bin Habib",
-        title: "Software Engineer, backend-focused — Node.js, TypeScript, PostgreSQL",
-        experience: "6+ Years",
+        title: "Software Engineer, backend-focused (Node.js, TypeScript, NestJS, PostgreSQL)",
+        experience: "6 years",
         academics: {
           degree: "MS in Business Analytics (MSBA)",
-          institution: "KSBL (expected Dec 2026)",
-          focus: "Decision science, financial modeling, pricing frameworks"
+          institution: "KSBL (final semester, graduating Dec 2026)"
         },
         focus_areas: [
-          "Scalable NestJS Backends",
-          "AI/LLM pipelines (Claude/OpenAI)",
-          "Queue-based processing (BullMQ/Redis)",
-          "Hybrid database lookups (pgvector/Postgres)"
+          "REST APIs in NestJS on PostgreSQL",
+          "Reliability: idempotent writes, retries, queues",
+          "AI-assisted backend work (Claude, OpenAI, Gemini APIs)",
+          "Moving toward data / analytics engineering"
         ],
         contact: {
           email: "omer.habib62@gmail.com",
@@ -64,24 +63,28 @@ export default function ApiExplorer() {
         results: [
           {
             name: "Groops",
-            segment: "B2B Social & Community Monetization",
-            stack: ["NestJS", "PostgreSQL", "Upstash Redis", "Stripe Connect", "BullMQ"],
-            implementation: "Replaced scan-based search with pgvector hybrid search (semantic + keyword), cutting database load substantially",
+            segment: "Platform for organisations (Blocship)",
+            stack: ["NestJS", "Lumen", "Laravel", "PostgreSQL"],
+            implementation: "Backend moved from Lumen to Laravel to NestJS; Clean Architecture",
             modules: 16,
-            migrations: 73
+            migrations: 73,
+            entities: 81,
+            test_suites: 472
           },
           {
             name: "Spot",
-            segment: "AI Mental Health Platform",
-            stack: ["NestJS", "Claude API", "NeverBounce", "Postmark", "Jest"],
-            implementation: "Clinical risk alert pipeline with EWMA baseline comparison and tiered alert classification",
-            automated_tests: 357
+            segment: "UK B2B workplace wellbeing SaaS",
+            stack: ["NestJS", "TypeScript", "PostgreSQL", "Stripe Connect"],
+            implementation: "Tiered subscription billing, GDPR data handling, timezone-aware processing. Deployed on Render, never launched to users.",
+            automated_tests: 357,
+            migrations: 18
           },
           {
-            name: "Audit-this-engine",
-            segment: "Agency Code-Intelligence Engine",
-            stack: ["NestJS", "TypeORM", "BullMQ", "Prompt-Caching", "Claude API"],
-            implementation: "Static analysis scanners fanned out in parallel BullMQ queues"
+            name: "AgencyView",
+            segment: "Reporting platform for a UK SaaS founder",
+            stack: ["PostgreSQL", "Scheduled pipeline"],
+            implementation: "Deterministic report engine, output filtered by user role",
+            report_types: 13
           }
         ]
       }
@@ -98,7 +101,7 @@ export default function ApiExplorer() {
       },
       responseBody: {
         success: true,
-        message: "Signal received and queued successfully.",
+        message: "Message received and queued.",
         job_id: "bullmq_job_912f20ba8bc1"
       }
     }
@@ -110,7 +113,6 @@ export default function ApiExplorer() {
 
   const handleExecute = (idx: number) => {
     setLoadingIndex(idx);
-    const latency = Math.floor(Math.random() * 25) + 8; // Simulated fast response between 8ms and 33ms
 
     setTimeout(() => {
       let bodyData = {};
@@ -124,8 +126,7 @@ export default function ApiExplorer() {
             message: inputs.message
           },
           job_id: `bullmq_job_${Math.random().toString(16).slice(2, 14)}`,
-          queue_priority: "high",
-          ping_ms: latency
+          queue_priority: "high"
         };
       } else {
         bodyData = endpoints[idx].responseBody;
@@ -135,13 +136,12 @@ export default function ApiExplorer() {
         ...prev,
         [idx]: {
           status: endpoints[idx].method === "POST" ? 201 : 200,
-          time: `${latency}ms`,
+          time: "simulated",
           body: JSON.stringify(bodyData, null, 2),
           headers: {
             "content-type": "application/json; charset=utf-8",
             "x-powered-by": "NestJS-Mercenary-API-Starter",
             "cache-control": "public, max-age=3600",
-            "x-response-time": `${latency}ms`,
             "connection": "keep-alive"
           }
         }
@@ -152,20 +152,20 @@ export default function ApiExplorer() {
 
   return (
     <div className="space-y-4">
-      <div className="border border-gray-200 rounded-lg overflow-hidden bg-white pl-card-shadow font-sans">
+      <div className="border border-border rounded-lg overflow-hidden bg-card  font-sans">
         {/* API Title Header */}
-        <div className="bg-pl-purple px-4 py-3 flex flex-col sm:flex-row sm:items-center justify-between border-b border-pl-purple font-mono text-xs gap-2 text-white">
+        <div className="bg-primary px-4 py-3 flex flex-col sm:flex-row sm:items-center justify-between border-b border-primary font-mono text-xs gap-2 text-primary-foreground">
           <div className="flex items-center gap-2 self-start sm:self-auto">
-            <Terminal className="w-4 h-4 text-pl-lime" />
-            <span className="font-bold text-slate-100">interactive-api-swagger v2.1.0</span>
+            <Terminal className="w-4 h-4 text-emerald-500" />
+            <span className="font-bold text-primary-foreground">interactive-api-swagger</span>
           </div>
-          <div className="text-slate-300 flex items-center gap-1.5 self-start sm:self-auto font-bold">
-            <span className="w-2 h-2 rounded-full bg-pl-lime animate-ping" /> Base URL: <span className="text-pl-lime">localhost:3000</span>
+          <div className="text-muted-foreground flex items-center gap-1.5 self-start sm:self-auto font-bold">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" /> Base URL: <span className="text-emerald-500">localhost:3000</span>
           </div>
         </div>
 
         {/* Endpoints Loop */}
-        <div className="divide-y divide-gray-200">
+        <div className="divide-y divide-border">
           {endpoints.map((ep, idx) => {
             const isExpanded = expandedIndex === idx;
             const isGet = ep.method === "GET";
@@ -173,54 +173,54 @@ export default function ApiExplorer() {
             const result = results[idx];
 
             return (
-              <div key={idx} className="bg-white">
+              <div key={idx} className="bg-card">
                 {/* Expandable Title Bar */}
                 <button
                   onClick={() => setExpandedIndex(isExpanded ? null : idx)}
-                  className="w-full px-4 py-4 flex items-center justify-between hover:bg-slate-50 cursor-pointer transition-colors text-left"
+                  className="w-full px-4 py-4 flex items-center justify-between hover:bg-muted cursor-pointer transition-colors text-left"
                 >
                   <div className="flex flex-wrap items-center gap-3">
                     <span className={`px-2.5 py-1 rounded text-xs font-mono font-bold border ${methodBg}`}>
                       {ep.method}
                     </span>
-                    <span className="font-mono text-sm text-slate-900 font-bold">{ep.path}</span>
-                    <span className="text-xs text-slate-500 hidden md:inline">— {ep.summary}</span>
+                    <span className="font-mono text-sm text-foreground font-bold">{ep.path}</span>
+                    <span className="text-xs text-muted-foreground hidden md:inline">— {ep.summary}</span>
                   </div>
                   <div>
                     {isExpanded ? (
-                      <ChevronUp className="w-4 h-4 text-slate-500" />
+                      <ChevronUp className="w-4 h-4 text-muted-foreground" />
                     ) : (
-                      <ChevronDown className="w-4 h-4 text-slate-500" />
+                      <ChevronDown className="w-4 h-4 text-muted-foreground" />
                     )}
                   </div>
                 </button>
 
                 {/* Expanded Box */}
                 {isExpanded && (
-                  <div className="px-4 sm:px-6 pb-6 pt-4 border-t border-gray-200 bg-slate-50/40 space-y-6">
-                    <p className="text-sm text-slate-600 font-sans leading-relaxed">{ep.description}</p>
+                  <div className="px-4 sm:px-6 pb-6 pt-4 border-t border-border bg-muted space-y-6">
+                    <p className="text-sm text-muted-foreground font-sans leading-relaxed">{ep.description}</p>
 
                     {/* Parameters or Inputs */}
                     {ep.parameters && (
                       <div className="space-y-2">
-                        <h4 className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider">Query Parameters</h4>
+                        <h4 className="text-xs font-mono font-bold text-muted-foreground uppercase tracking-wider">Query Parameters</h4>
                         <div className="overflow-x-auto">
-                          <table className="w-full text-xs font-mono text-left border-collapse border border-gray-200 rounded bg-white">
+                          <table className="w-full text-xs font-mono text-left border-collapse border border-border rounded bg-card">
                             <thead>
-                              <tr className="bg-slate-50 text-slate-500 border-b border-gray-200">
-                                <th className="p-2 border-r border-gray-200">Name</th>
-                                <th className="p-2 border-r border-gray-200">Type</th>
-                                <th className="p-2 border-r border-gray-200">Required</th>
+                              <tr className="bg-muted text-muted-foreground border-b border-border">
+                                <th className="p-2 border-r border-border">Name</th>
+                                <th className="p-2 border-r border-border">Type</th>
+                                <th className="p-2 border-r border-border">Required</th>
                                 <th className="p-2">Description</th>
                               </tr>
                             </thead>
                             <tbody>
                               {ep.parameters.map((p, pIdx) => (
-                                <tr key={pIdx} className="border-b border-gray-100">
-                                  <td className="p-2 font-bold text-slate-950 border-r border-gray-200">{p.name}</td>
-                                  <td className="p-2 border-r border-gray-200 text-pl-purple font-semibold">{p.type}</td>
-                                  <td className="p-2 border-r border-gray-200 text-pl-magenta font-semibold">{p.required ? "true" : "false"}</td>
-                                  <td className="p-2 text-slate-600">{p.description} {p.default && `(default: ${p.default})`}</td>
+                                <tr key={pIdx} className="border-b border-border">
+                                  <td className="p-2 font-bold text-foreground border-r border-border">{p.name}</td>
+                                  <td className="p-2 border-r border-border text-foreground font-semibold">{p.type}</td>
+                                  <td className="p-2 border-r border-border text-muted-foreground font-semibold">{p.required ? "true" : "false"}</td>
+                                  <td className="p-2 text-muted-foreground">{p.description} {p.default && `(default: ${p.default})`}</td>
                                 </tr>
                               ))}
                             </tbody>
@@ -232,40 +232,40 @@ export default function ApiExplorer() {
                     {/* POST Request Body Inputs */}
                     {ep.method === "POST" && (
                       <div className="space-y-3">
-                        <h4 className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider">Request Parameters</h4>
+                        <h4 className="text-xs font-mono font-bold text-muted-foreground uppercase tracking-wider">Request Parameters</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="space-y-3 bg-white p-3 sm:p-4 rounded border border-gray-200 shadow-sm">
+                          <div className="space-y-3 bg-card p-3 sm:p-4 rounded border border-border shadow-sm">
                             <div className="space-y-1">
-                              <label className="text-[10px] font-mono text-slate-500 font-bold block">NAME</label>
+                              <label className="text-[10px] font-mono text-muted-foreground font-bold block">NAME</label>
                               <input
                                 type="text"
                                 value={inputs.name}
                                 onChange={(e) => handleInputChange("name", e.target.value)}
-                                className="w-full bg-slate-50 border border-gray-200 rounded px-2.5 py-1.5 text-xs text-slate-950 font-mono outline-none focus:border-pl-purple"
+                                className="w-full bg-muted border border-border rounded px-2.5 py-1.5 text-xs text-foreground font-mono outline-none focus:border-primary"
                               />
                             </div>
                             <div className="space-y-1">
-                              <label className="text-[10px] font-mono text-slate-500 font-bold block">EMAIL</label>
+                              <label className="text-[10px] font-mono text-muted-foreground font-bold block">EMAIL</label>
                               <input
                                 type="email"
                                 value={inputs.email}
                                 onChange={(e) => handleInputChange("email", e.target.value)}
-                                className="w-full bg-slate-50 border border-gray-200 rounded px-2.5 py-1.5 text-xs text-slate-950 font-mono outline-none focus:border-pl-purple"
+                                className="w-full bg-muted border border-border rounded px-2.5 py-1.5 text-xs text-foreground font-mono outline-none focus:border-primary"
                               />
                             </div>
                             <div className="space-y-1">
-                              <label className="text-[10px] font-mono text-slate-500 font-bold block">MESSAGE</label>
+                              <label className="text-[10px] font-mono text-muted-foreground font-bold block">MESSAGE</label>
                               <textarea
                                 value={inputs.message}
                                 rows={2}
                                 onChange={(e) => handleInputChange("message", e.target.value)}
-                                className="w-full bg-slate-50 border border-gray-200 rounded px-2.5 py-1.5 text-xs text-slate-950 font-mono outline-none focus:border-pl-purple resize-none"
+                                className="w-full bg-muted border border-border rounded px-2.5 py-1.5 text-xs text-foreground font-mono outline-none focus:border-primary resize-none"
                               />
                             </div>
                           </div>
                           <div className="space-y-1.5">
-                            <label className="text-[10px] font-mono text-slate-500 block font-bold">RAW JSON STRUCTURE</label>
-                            <pre className="p-3 bg-slate-50 border border-gray-200 rounded text-[10px] font-mono text-slate-500 overflow-x-auto h-[125px] block py-4">
+                            <label className="text-[10px] font-mono text-muted-foreground block font-bold">RAW JSON STRUCTURE</label>
+                            <pre className="p-3 bg-muted border border-border rounded text-[10px] font-mono text-muted-foreground overflow-x-auto h-[125px] block py-4">
 {`{
   "name": "${inputs.name}",
   "email": "${inputs.email}",
@@ -282,7 +282,7 @@ export default function ApiExplorer() {
                       <button
                         onClick={() => handleExecute(idx)}
                         disabled={loadingIndex === idx}
-                        className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 active:scale-95 disabled:opacity-50 text-white font-bold rounded font-mono text-xs cursor-pointer flex items-center gap-1.5 transition-all shadow-sm"
+                        className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 active:scale-95 disabled:opacity-50 text-primary-foreground font-bold rounded font-mono text-xs cursor-pointer flex items-center gap-1.5 transition-all shadow-sm"
                       >
                         {loadingIndex === idx ? (
                           <>
@@ -303,19 +303,19 @@ export default function ApiExplorer() {
 
                     {/* Execution Results */}
                     {result && (
-                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 border-t border-gray-200 pt-4">
+                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 border-t border-border pt-4">
                         <div className="lg:col-span-2 space-y-1.5">
-                          <label className="text-[10px] font-mono text-slate-500 block font-bold">RESPONSE BODY</label>
-                          <pre className="p-4 bg-slate-50 border border-gray-200 rounded text-xs font-mono text-slate-800 overflow-x-auto max-h-[300px] pl-scrollbar">
+                          <label className="text-[10px] font-mono text-muted-foreground block font-bold">RESPONSE BODY</label>
+                          <pre className="p-4 bg-muted border border-border rounded text-xs font-mono text-foreground overflow-x-auto max-h-[300px] pl-scrollbar">
                             {result.body}
                           </pre>
                         </div>
                         <div className="space-y-1.5">
-                          <label className="text-[10px] font-mono text-slate-500 block font-bold">HEADERS</label>
-                          <pre className="p-3 bg-slate-50 border border-gray-200 rounded text-[10px] font-mono text-slate-600 overflow-x-auto max-h-[300px] pl-scrollbar space-y-1">
+                          <label className="text-[10px] font-mono text-muted-foreground block font-bold">HEADERS</label>
+                          <pre className="p-3 bg-muted border border-border rounded text-[10px] font-mono text-muted-foreground overflow-x-auto max-h-[300px] pl-scrollbar space-y-1">
                             {Object.entries(result.headers).map(([key, val]) => (
                               <div key={key} className="truncate">
-                                <span className="text-slate-400 font-bold">{key}:</span> {val}
+                                <span className="text-muted-foreground font-bold">{key}:</span> {val}
                               </div>
                             ))}
                           </pre>
