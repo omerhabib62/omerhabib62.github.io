@@ -21,9 +21,10 @@ const geistMono = Geist_Mono({
   variable: "--font-mono",
 });
 
-// Paste your GoatCounter site code here (the part before ".goatcounter.com").
+// Paste your Cloudflare Web Analytics token here (the "token" value inside
+// data-cf-beacon in the snippet from the Cloudflare dashboard).
 // Leave it empty and no tracking script is added.
-const GOATCOUNTER_CODE = "";
+const CLOUDFLARE_ANALYTICS_TOKEN = "";
 
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
@@ -73,10 +74,10 @@ export default function RootLayout({
             <Navbar />
           </TooltipProvider>
         </ThemeProvider>
-        {GOATCOUNTER_CODE && (
+        {CLOUDFLARE_ANALYTICS_TOKEN && (
           <Script
-            src="https://gc.zgo.at/count.js"
-            data-goatcounter={`https://${GOATCOUNTER_CODE}.goatcounter.com/count`}
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: CLOUDFLARE_ANALYTICS_TOKEN })}
             strategy="afterInteractive"
           />
         )}
