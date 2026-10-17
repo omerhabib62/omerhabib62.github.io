@@ -12,9 +12,9 @@ export const DATA = {
     "I build REST APIs in Node.js and NestJS on PostgreSQL, along with the reliability work around them: idempotent writes, retries with backoff, queue-based processing and scheduled jobs. I also integrate LLMs, with schema-validated output and tiered model routing. I have been working independently for UK SaaS clients since January 2026, and I am finishing an MSBA at KSBL (graduating December 2026), which is moving me toward data / analytics engineering and AI-assisted backend roles. I am looking for work as soon as possible: remote, Karachi on-site, or relocation after December 2026.",
   availability: "Available now: full-time or contract",
   cvs: [
-    { label: "CV: Backend", href: "/resume.pdf", file: "Omer_Bin_Habib_Backend_Engineer.pdf" },
-    { label: "CV: AI Development", href: "/resume-ai.pdf", file: "Omer_Bin_Habib_AI_Developer.pdf" },
-    { label: "CV: Analytics", href: "/resume-analytics.pdf", file: "Omer_Bin_Habib_Business_Analytics.pdf" },
+    { label: "CV: Backend", href: "/resume-1page.pdf", file: "Omer_Bin_Habib_Backend_1page.pdf" },
+    { label: "CV: AI Development", href: "/resume-ai-1page.pdf", file: "Omer_Bin_Habib_AI_1page.pdf" },
+    { label: "CV: Analytics", href: "/resume-analytics-1page.pdf", file: "Omer_Bin_Habib_Analytics_1page.pdf" },
   ],
   freelance: [
     { label: "Fiverr", href: "https://www.fiverr.com/umerhabib509" },
